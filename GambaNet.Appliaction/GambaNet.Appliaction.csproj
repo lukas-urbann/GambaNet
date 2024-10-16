@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GambaNet.Domain\GambaNet.Domain.csproj" />
+    <ProjectReference Include="..\GambaNet.Infrastructure\GambaNet.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

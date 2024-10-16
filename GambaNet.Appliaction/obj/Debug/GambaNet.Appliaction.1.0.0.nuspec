@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>GambaNet.Appliaction</id>
+    <version>1.0.0</version>
+    <authors>GambaNet.Appliaction</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="87bd5770a329fc598ed274c2fbc959661d032373" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="GambaNet.Domain" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="GambaNet.Infrastructure" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Appliaction\bin\Debug\net8.0\GambaNet.Appliaction.dll" target="lib\net8.0\GambaNet.Appliaction.dll" />
+  </files>
+</package>

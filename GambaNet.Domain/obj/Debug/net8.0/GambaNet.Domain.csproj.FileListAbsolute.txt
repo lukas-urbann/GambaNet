@@ -1,0 +1,12 @@
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\bin\Debug\net8.0\GambaNet.Domain.deps.json
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\bin\Debug\net8.0\GambaNet.Domain.dll
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\bin\Debug\net8.0\GambaNet.Domain.pdb
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\obj\Debug\net8.0\GambaNet.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\obj\Debug\net8.0\GambaNet.Domain.AssemblyInfoInputs.cache
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\obj\Debug\net8.0\GambaNet.Domain.AssemblyInfo.cs
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\obj\Debug\net8.0\GambaNet.Domain.csproj.CoreCompileInputs.cache
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\obj\Debug\net8.0\GambaNet.Domain.sourcelink.json
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\obj\Debug\net8.0\GambaNet.Domain.dll
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\obj\Debug\net8.0\refint\GambaNet.Domain.dll
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\obj\Debug\net8.0\GambaNet.Domain.pdb
+C:\Users\kramn\Desktop\Skola\5.semestr\Webovky\GambaNet\GambaNet.Domain\obj\Debug\net8.0\ref\GambaNet.Domain.dll

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GambaNet.Appliaction")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e40aba25d5131370cc8792adbcbd10eaad252570")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87bd5770a329fc598ed274c2fbc959661d032373")]
 [assembly: System.Reflection.AssemblyProductAttribute("GambaNet.Appliaction")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GambaNet.Appliaction")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
