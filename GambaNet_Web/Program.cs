@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using GambaNet.Infrastructure.Database;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+string connectionString = builder.Configuration.GetConnectionString("SEQUEL");
+ServerVersion serverVersion = new MySqlServerVersion("8.0.38");
+builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder => optionsBuilder.UseMySql(connectionString, serverVersion));
 
 var app = builder.Build();
 
