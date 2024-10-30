@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace GambaNet.Domain.Entity
 {
+    [Table(nameof(Stat))]
     public class Stat : Entity<int>
     {
         public Decimal TotalBet { get; set; }

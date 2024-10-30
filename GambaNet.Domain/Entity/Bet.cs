@@ -10,6 +10,7 @@ using GambaNet.Domain.Entity.Interfaces;
 
 namespace GambaNet.Domain.Entity
 {
+    [Table(nameof(Bet))]
     public class Bet : Entity<int>
     {
         [ForeignKey(nameof(Game))]

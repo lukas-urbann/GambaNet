@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace GambaNet.Domain.Entity
 {
+    [Table(nameof(Transaction))]
     public class Transaction : Entity<int>
     {
         [Required]

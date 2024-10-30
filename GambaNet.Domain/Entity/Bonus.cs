@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace GambaNet.Domain.Entity
 {
-    internal class Bonus : Entity<int>
+    [Table(nameof(Bonus))]
+    public class Bonus : Entity<int>
     {
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
