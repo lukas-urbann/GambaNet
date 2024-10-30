@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using GambaNet.Infrastructure.Database;
+using Pomelo.EntityFrameworkCore.MySql.Internal;
+using Microsoft.CodeAnalysis.Diagnostics;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,8 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 string connectionString = builder.Configuration.GetConnectionString("SEQUEL");
-ServerVersion serverVersion = new MySqlServerVersion("8.0.38");
-builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder => optionsBuilder.UseMySql(connectionString, serverVersion));
+ServerVersion serverVersion = new MySqlServerVersion("8.0.40");
+MySqlOptions options = new MySqlOptions();
+
+builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder =>
+    optionsBuilder.UseMySql(connectionString, serverVersion,
+        b => b.MigrationsAssembly("GambaNet_Web")));
 
 var app = builder.Build();
 
