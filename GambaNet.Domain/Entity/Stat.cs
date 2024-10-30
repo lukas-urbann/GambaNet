@@ -10,6 +10,7 @@ namespace GambaNet.Domain.Entity
     public class Stat : Entity<int>
     {
         public Decimal TotalBet { get; set; }
+        public Decimal TotalRevenue { get; set; }
         public int WinRate { get; set; }
         [ForeignKey(nameof(Game))]
         public int GameId { get; set; }
