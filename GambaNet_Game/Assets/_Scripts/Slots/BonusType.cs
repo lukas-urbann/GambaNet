@@ -6,7 +6,6 @@ namespace GambaNet.Slots
     public class BonusType : ScriptableObject
     {
         public Sprite bonusIcon;
-        public string bonusName;
         public float bonusMultiplier;
         public int bonusReward;
         public int bonusRarity;

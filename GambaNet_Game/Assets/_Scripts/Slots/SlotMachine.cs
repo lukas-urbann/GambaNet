@@ -1,16 +1,19 @@
+using GambaNet.Generic;
 using UnityEngine;
 
-public class SlotMachine : MonoBehaviour
+namespace GambaNet.Slots
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class SlotMachine : MonoBehaviour
     {
+        public Constructor reelConstructor;
         
-    }
+        private void Start()
+        {
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void ConstructReels()
+        {
+            
+        }
     }
 }
