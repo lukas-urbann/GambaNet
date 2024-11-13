@@ -19,5 +19,15 @@ namespace GambaNet.Infrastructure.Database
         public GambaNetDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            GameInit gameInit = new GameInit();
+            modelBuilder.Entity<Game>().HasData(gameInit.GetGames());
+            TransactionTypeInit transactionTypeInit = new TransactionTypeInit();
+            modelBuilder.Entity<TransactionType>().HasData(transactionTypeInit.GetTransactionTypes());
+        }
     }
 }
