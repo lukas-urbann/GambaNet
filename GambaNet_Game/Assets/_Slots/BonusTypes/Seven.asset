@@ -13,7 +13,4 @@ MonoBehaviour:
   m_Name: Seven
   m_EditorClassIdentifier: 
   bonusIcon: {fileID: 7044563021175377470, guid: cea620e51a8715349ad9eca00025ab98, type: 3}
-  bonusMultiplier: 0
-  bonusReward: 0
-  bonusRarity: 0
-  bonusIndependency: 0
+  bonusMultiplier: 7

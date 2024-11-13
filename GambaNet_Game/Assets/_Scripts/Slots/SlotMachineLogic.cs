@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using GambaNet.Wrapper;
 using UnityEngine;
 using Random = System.Random;
 
@@ -11,9 +11,14 @@ namespace GambaNet.Slots
         public static SlotMachineLogic Instance;
         
         [SerializeField] private List<BonusType> possibleBonusTypes = new(); // List of possible bonuses
-        public bool shouldWin = false; // Indicates if the player should win or not, calculated by other scripts
         private SlotBonus[,] slotBonuses = new SlotBonus[5, 5]; // 2D array of SlotBonus objects
         public GameObject gridParent;
+        private int lostRoundInRow = 0;
+        private int winRoundInRow = 0;
+        public List<GameObject> rowLights = new();
+        private float betAmount;
+        
+        public void SetBetAmount(float amount) => betAmount = amount;
 
         private void Awake()
         {
@@ -23,13 +28,13 @@ namespace GambaNet.Slots
                 Destroy(gameObject);
         }
 
-        private void OnEnable()
+        private void Start()
         {
-            SlotMachineReel.Instance.OnReelSwitch.AddListener(AssignBonusesToSlots);
-            AssignBonusesToSlots();
+            SlotMachineReel.Instance.OnReelSwitch.AddListener(OnReel);
+            StarterAssignBonusesToSlots();
         }
 
-        private void AssignBonusesToSlots()
+        private void StarterAssignBonusesToSlots()
         {
             int childIndex = 0;
             for (int i = 0; i < 5; i++)
@@ -43,20 +48,60 @@ namespace GambaNet.Slots
             }
         }
 
-        private void Update()
+        private void OnReel()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                GenerateBonusGrid();
-            }
-        }
+            CreditManager.Instance.UpdateBalance(-betAmount);
+            StarterAssignBonusesToSlots();
+            if (!GetWinChance()) return;
 
-        public void GenerateBonusGrid()
-        {
-            bool shouldWin = GetWinChance();
-
+            float winCount = (int)ChooseWinningCount();
+            BonusType bonus = ChooseRandomBonusType();
             
+            GenerateWinningRow(ChooseWinningRow(), (int)winCount, bonus);
+            
+            CreditManager.Instance.UpdateBalance(winCount * betAmount * bonus.bonusMultiplier);
         }
+
+        private void GenerateWinningRow(int row, int count, BonusType bonus)
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                if (count >= 5)
+                {
+                    OverwriteBonusToSlot(row - 1, i, bonus);
+                    continue;
+                }
+                else
+                {
+                    if (i < count)
+                    {
+                        OverwriteBonusToSlot(row - 1, i, bonus);
+                    }
+                    else
+                    {
+                        BonusType newBonus = ChooseRandomBonusType();
+                        while(newBonus == bonus)
+                        {
+                            newBonus = ChooseRandomBonusType();
+                        }
+
+                        OverwriteBonusToSlot(row - 1, i, newBonus);
+                    }
+
+                }
+            }
+
+            EnableRowLight(row);
+        }
+
+        public void DisableRowLights() => rowLights.ForEach(light => light.SetActive(false));
+
+        private void EnableRowLight(int row)
+        {
+            rowLights[row-2].SetActive(true);
+        }
+
+        private void OverwriteBonusToSlot(int x, int y, BonusType bonus) => slotBonuses[x, y].GetComponent<SlotBonus>().SetBonusType(bonus);
 
         public BonusType ChooseRandomBonusType()
         {
@@ -65,14 +110,44 @@ namespace GambaNet.Slots
             return possibleBonusTypes[randomIndex];
         }
 
+        public float ChooseWinningCount()
+        {
+            float count = (float)Math.Floor(3 + UnityEngine.Random.Range(0 + (0.2f * UnityEngine.Random.Range(0,4)), 3) - UnityEngine.Random.Range(0,2));
+            return count < 3 ? 3 : count;
+        }
+
+        //2-4
         public int ChooseWinningRow()
         {
-            return UnityEngine.Random.Range(0, 5);
+            return UnityEngine.Random.Range(2, 5);
         }
 
         public bool GetWinChance()
         {
-            return shouldWin;
+            if (winRoundInRow > 1)
+            {
+                winRoundInRow = 0;
+                lostRoundInRow++;
+                return false;
+            }
+
+            if (lostRoundInRow > 10)
+            {
+                lostRoundInRow = 0;
+                winRoundInRow++;
+                return true;
+            }
+
+            if (UnityEngine.Random.Range(0, 10 - lostRoundInRow) == 0)
+            {
+                winRoundInRow++;
+                lostRoundInRow = 0;
+                return true;
+            }
+
+            winRoundInRow = 0;
+            lostRoundInRow++;
+            return false;
         }
     }
 }

@@ -5,26 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d73df8d-1bfa-4b45-b840-8fc17364ac46" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/Debug/net8.0/GambaNet.Appliaction.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/GambaNet.Appliaction.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/GambaNet.Appliaction.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/GambaNet.Appliaction.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/GambaNet.Appliaction.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/GambaNet.Appliaction.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/GambaNet.Appliaction.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Appliaction/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Domain/obj/Debug/net8.0/GambaNet.Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Domain/obj/Debug/net8.0/GambaNet.Domain.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Domain/obj/Debug/net8.0/GambaNet.Domain.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Domain/obj/Debug/net8.0/GambaNet.Domain.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Domain/obj/Debug/net8.0/GambaNet.Domain.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Domain/obj/Debug/net8.0/GambaNet.Domain.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Domain/obj/Debug/net8.0/GambaNet.Domain.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Domain/obj/Debug/net8.0/GambaNet.Domain.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Domain/obj/GambaNet.Domain.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Domain/obj/GambaNet.Domain.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Domain/obj/GambaNet.Domain.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Domain/obj/GambaNet.Domain.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Domain/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Domain/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Domain/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Domain/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/Debug/net8.0/GambaNet.Infrastructure.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/GambaNet.Infrastructure.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/GambaNet.Infrastructure.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/GambaNet.Infrastructure.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/GambaNet.Infrastructure.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/GambaNet.Infrastructure.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/GambaNet.Infrastructure.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GambaNet.Infrastructure/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GambaNet_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GambaNet_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Other/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Other/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Fonts/sussyfont.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Fonts/sussyfont.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Generic.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Generic.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Generic/Singleton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Generic/Singleton.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Slots/BonusType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Slots/BonusType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Slots/SlotMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Slots/SlotMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Slots/SlotMachineLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Slots/SlotMachineLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Settings/UniversalRP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Settings/UniversalRP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Test Bonus 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Test Bonus 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Test Bonus 2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Test Bonus 2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Test Bonus 3.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Test Bonus 3.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Wrapper/CreditManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Wrapper/CreditManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Cherry.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Cherry.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Lemon.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Lemon.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Melon.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Melon.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Orange.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Orange.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Plum.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Plum.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Seven.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Seven.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Star.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Slots/BonusTypes/Star.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +137,8 @@
       <workItem from="1729489691666" duration="857000" />
       <workItem from="1729686077400" duration="470000" />
       <workItem from="1729686755940" duration="6047000" />
+      <workItem from="1731511125832" duration="100000" />
+      <workItem from="1731511778038" duration="3657000" />
     </task>
     <servers />
   </component>

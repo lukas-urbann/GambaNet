@@ -7,8 +7,5 @@ namespace GambaNet.Slots
     {
         public Sprite bonusIcon;
         public float bonusMultiplier;
-        public int bonusReward;
-        public int bonusRarity;
-        public bool bonusIndependency;
     }
 }

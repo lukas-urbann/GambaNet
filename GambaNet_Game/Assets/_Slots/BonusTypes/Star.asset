@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: Star
   m_EditorClassIdentifier: 
   bonusIcon: {fileID: 4815476061570213978, guid: c68e3d39a83b8e541bfdb0f16897ffa3, type: 3}
-  bonusName: 4
-  bonusMultiplier: 0
-  bonusReward: 0
-  bonusRarity: 0
-  bonusIndependency: 0
+  bonusMultiplier: 2

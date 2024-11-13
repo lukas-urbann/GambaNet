@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: Lemon
   m_EditorClassIdentifier: 
   bonusIcon: {fileID: -5264540460668927758, guid: 74b80f3ed72d68640985a77d50c48671, type: 3}
-  bonusName: Lemon
-  bonusMultiplier: 0
-  bonusReward: 0
-  bonusRarity: 0
-  bonusIndependency: 0
+  bonusMultiplier: 0.7

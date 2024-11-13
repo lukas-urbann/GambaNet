@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: Cherry
   m_EditorClassIdentifier: 
   bonusIcon: {fileID: -90375647409325229, guid: 297a56f9f8aee0b46964bb80fcb195db, type: 3}
-  bonusName: Cherry
-  bonusMultiplier: 0
-  bonusReward: 0
-  bonusRarity: 0
-  bonusIndependency: 0
+  bonusMultiplier: 0.8

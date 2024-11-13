@@ -30,7 +30,7 @@ namespace GambaNet.Wrapper
         private float LoadUserBalance()
         {
             //TODO: Doplnit tělo, musí to načítat přímo z databáze a musí to tím pádem k ní mít konstantní přístup
-            return 500;
+            return _localUserBalance;
         }
 
         private bool UploadUserBalance()
@@ -43,11 +43,7 @@ namespace GambaNet.Wrapper
         public void UpdateBalance(float amount)
         {
             _localUserBalance += amount;
-
-            while (!UploadUserBalance())
-            {
-                UploadUserBalance();
-            }
+            UploadUserBalance();
         }
         
         public string GetUserBalance()

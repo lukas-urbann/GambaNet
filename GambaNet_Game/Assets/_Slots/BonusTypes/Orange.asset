@@ -13,7 +13,4 @@ MonoBehaviour:
   m_Name: Orange
   m_EditorClassIdentifier: 
   bonusIcon: {fileID: -6410442598547967069, guid: 344a914605dac7f469ea0ca61f6ee833, type: 3}
-  bonusMultiplier: 0
-  bonusReward: 0
-  bonusRarity: 0
-  bonusIndependency: 0
+  bonusMultiplier: 0.9
