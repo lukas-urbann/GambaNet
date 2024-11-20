@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 
 string connectionString = builder.Configuration.GetConnectionString("SEQUEL");
 ServerVersion serverVersion = new MySqlServerVersion("8.0.40");
-MySqlOptions options = new MySqlOptions();
+// For later use MySqlOptions options = new MySqlOptions();
 
 builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder =>
     optionsBuilder.UseMySql(connectionString, serverVersion,
@@ -34,8 +34,9 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+app.RunAsync();
