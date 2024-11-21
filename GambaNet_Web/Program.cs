@@ -39,4 +39,4 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.RunAsync();
+app.Run();
