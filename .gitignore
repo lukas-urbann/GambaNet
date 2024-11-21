@@ -874,3 +874,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+GambaNet.Domain/obj/Debug/net8.0/GambaNet.Domain.sourcelink.json
