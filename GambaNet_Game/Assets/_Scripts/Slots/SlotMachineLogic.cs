@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using GambaNet.Wrapper;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = System.Random;
 
 namespace GambaNet.Slots
@@ -17,6 +18,7 @@ namespace GambaNet.Slots
         private int winRoundInRow = 0;
         public List<GameObject> rowLights = new();
         private float betAmount;
+        public UnityEvent OnWin;
         
         public void SetBetAmount(float amount) => betAmount = amount;
 
@@ -54,6 +56,7 @@ namespace GambaNet.Slots
             StarterAssignBonusesToSlots();
             if (!GetWinChance()) return;
 
+            OnWin?.Invoke();
             float winCount = (int)ChooseWinningCount();
             BonusType bonus = ChooseRandomBonusType();
             
