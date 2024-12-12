@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7358d05626041840a2fa89bc20ab7b7, type: 3}
   m_Name: Melon
   m_EditorClassIdentifier: 
-  bonusIcon: {fileID: 3872468970474584729, guid: f342f373aefad0a48aaae24722f0c360, type: 3}
+  bonusIcon: {fileID: 21300000, guid: f342f373aefad0a48aaae24722f0c360, type: 3}
   bonusMultiplier: 1.3

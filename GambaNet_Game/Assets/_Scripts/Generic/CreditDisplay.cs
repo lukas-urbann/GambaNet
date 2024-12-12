@@ -2,7 +2,7 @@ using GambaNet.Wrapper;
 using TMPro;
 using UnityEngine;
 
-namespace GambaNet.Slots
+namespace GambaNet.Generic
 {
     public class CreditDisplay : MonoBehaviour
     {

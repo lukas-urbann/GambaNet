@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7358d05626041840a2fa89bc20ab7b7, type: 3}
   m_Name: Star
   m_EditorClassIdentifier: 
-  bonusIcon: {fileID: 4815476061570213978, guid: c68e3d39a83b8e541bfdb0f16897ffa3, type: 3}
+  bonusIcon: {fileID: 21300000, guid: c68e3d39a83b8e541bfdb0f16897ffa3, type: 3}
   bonusMultiplier: 2

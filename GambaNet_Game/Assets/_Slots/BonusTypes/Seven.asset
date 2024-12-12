@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7358d05626041840a2fa89bc20ab7b7, type: 3}
   m_Name: Seven
   m_EditorClassIdentifier: 
-  bonusIcon: {fileID: 7044563021175377470, guid: cea620e51a8715349ad9eca00025ab98, type: 3}
-  bonusMultiplier: 7
+  bonusIcon: {fileID: 21300000, guid: cea620e51a8715349ad9eca00025ab98, type: 3}
+  bonusMultiplier: 3.5

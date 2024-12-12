@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7358d05626041840a2fa89bc20ab7b7, type: 3}
   m_Name: Orange
   m_EditorClassIdentifier: 
-  bonusIcon: {fileID: -6410442598547967069, guid: 344a914605dac7f469ea0ca61f6ee833, type: 3}
+  bonusIcon: {fileID: 21300000, guid: 344a914605dac7f469ea0ca61f6ee833, type: 3}
   bonusMultiplier: 0.9

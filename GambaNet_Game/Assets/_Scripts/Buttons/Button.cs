@@ -15,7 +15,7 @@ namespace GambaNet.Buttons
         public UnityEvent OnButtonEnter = new();
         public UnityEvent OnButtonExit = new();
         private Action selectAction;
-        
+
         public void Rig(Action act)
         {
             selectAction = act;
@@ -29,7 +29,6 @@ namespace GambaNet.Buttons
             yield return new WaitForEndOfFrame();
             VoidClick();
         }
-        
         
         public void OnPointerClick(PointerEventData eventData)
         {

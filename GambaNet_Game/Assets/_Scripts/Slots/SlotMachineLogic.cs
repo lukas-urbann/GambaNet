@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = System.Random;
 
+
+//nejhorsi skript co jsem kdy napsal, ale dela co ma :((
 namespace GambaNet.Slots
 {
     public class SlotMachineLogic : MonoBehaviour

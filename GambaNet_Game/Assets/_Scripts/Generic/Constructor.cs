@@ -12,8 +12,6 @@ namespace GambaNet.Generic
         public bool clearOnConstruct = true;
 
         public UnityEvent onConstruct = new UnityEvent(), onDestruct = new UnityEvent();
-
-        
         
         public void Construct<T>(List<T> items, Action<GameObject, T> bind)
         {

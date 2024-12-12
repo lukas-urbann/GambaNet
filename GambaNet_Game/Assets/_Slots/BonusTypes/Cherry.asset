@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7358d05626041840a2fa89bc20ab7b7, type: 3}
   m_Name: Cherry
   m_EditorClassIdentifier: 
-  bonusIcon: {fileID: -90375647409325229, guid: 297a56f9f8aee0b46964bb80fcb195db, type: 3}
+  bonusIcon: {fileID: 21300000, guid: 297a56f9f8aee0b46964bb80fcb195db, type: 3}
   bonusMultiplier: 0.8

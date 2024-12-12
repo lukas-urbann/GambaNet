@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7358d05626041840a2fa89bc20ab7b7, type: 3}
   m_Name: Lemon
   m_EditorClassIdentifier: 
-  bonusIcon: {fileID: -5264540460668927758, guid: 74b80f3ed72d68640985a77d50c48671, type: 3}
+  bonusIcon: {fileID: 21300000, guid: 74b80f3ed72d68640985a77d50c48671, type: 3}
   bonusMultiplier: 0.7
