@@ -10,6 +10,9 @@ namespace GambaNet.Buttons
         private List<Button> connectedBtnList = new(); 
         public UnityEvent<Button> OnButtonSelected = new();
 
+        public Button lastSelectedButton;
+        public List<Button> buttonsExceptSelected => connectedBtnList.FindAll(b => b != lastSelectedButton);
+
         private void Start()
         {
             foreach (Transform child in transform)
@@ -27,6 +30,7 @@ namespace GambaNet.Buttons
             connectedBtnList.ForEach(b => b.OnDeselectButton?.Invoke());
             yield return new WaitForEndOfFrame();
             btn.OnSelectButton?.Invoke();
+            lastSelectedButton = btn;
         }
     }
 }

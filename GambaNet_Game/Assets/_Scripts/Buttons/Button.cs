@@ -8,6 +8,7 @@ namespace GambaNet.Buttons
 {
     public class Button : MonoBehaviour, IPointerClickHandler, IPointerExitHandler, IPointerEnterHandler
     {
+        public bool interactable = true;
         public bool selectOnStart;
         public UnityEvent OnSelectButton = new();
         public UnityEvent OnDeselectButton = new();
@@ -32,22 +33,26 @@ namespace GambaNet.Buttons
         
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (!interactable) return;
             OnButtonClick?.Invoke();
             selectAction?.Invoke();
         }
 
         public void VoidClick()
         {
+            if (!interactable) return;
             OnPointerClick(null);
         }
         
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (!interactable) return;
             OnButtonEnter?.Invoke();
         }
         
         public void OnPointerExit(PointerEventData eventData)
         {
+            if (!interactable) return;
             OnButtonExit?.Invoke();
         }
     }
