@@ -48,7 +48,7 @@ namespace GambaNet.Wrapper
         
         public string GetUserBalance()
         {
-            return _localUserBalance.ToString(CultureInfo.InvariantCulture);
+            return _localUserBalance.ToString("F2", CultureInfo.InvariantCulture);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace GambaNet.Slots
         public GameObject gridParent;
         private int lostRoundInRow = 0;
         private int winRoundInRow = 0;
+        public int maxLosses = 16;
         public List<GameObject> rowLights = new();
         private float betAmount;
         public UnityEvent OnWin;
@@ -97,7 +98,7 @@ namespace GambaNet.Slots
             EnableRowLight(row);
         }
 
-        public void DisableRowLights() => rowLights.ForEach(light => light.SetActive(false));
+        public void DisableRowLights() => rowLights.ForEach(o => o.SetActive(false));
 
         private void EnableRowLight(int row)
         {
@@ -106,26 +107,26 @@ namespace GambaNet.Slots
 
         private void OverwriteBonusToSlot(int x, int y, BonusType bonus) => slotBonuses[x, y].GetComponent<SlotBonus>().SetBonusType(bonus);
 
-        public BonusType ChooseRandomBonusType()
+        private BonusType ChooseRandomBonusType()
         {
             var random = new Random();
             var randomIndex = random.Next(0, possibleBonusTypes.Count);
             return possibleBonusTypes[randomIndex];
         }
 
-        public float ChooseWinningCount()
+        private float ChooseWinningCount()
         {
-            float count = (float)Math.Floor(3 + UnityEngine.Random.Range(0 + (0.2f * UnityEngine.Random.Range(0,4)), 3) - UnityEngine.Random.Range(0,2));
+            var count = (float)Math.Floor(3 + UnityEngine.Random.Range(0 + (0.2f * UnityEngine.Random.Range(0,4)), 3) - UnityEngine.Random.Range(0,2));
             return count < 3 ? 3 : count;
         }
 
         //2-4
-        public int ChooseWinningRow()
+        private int ChooseWinningRow()
         {
             return UnityEngine.Random.Range(2, 5);
         }
 
-        public bool GetWinChance()
+        private bool GetWinChance()
         {
             if (winRoundInRow > 1)
             {
@@ -134,14 +135,14 @@ namespace GambaNet.Slots
                 return false;
             }
 
-            if (lostRoundInRow > 10)
+            if (lostRoundInRow > maxLosses)
             {
                 lostRoundInRow = 0;
                 winRoundInRow++;
                 return true;
             }
 
-            if (UnityEngine.Random.Range(0, 10 - lostRoundInRow) == 0)
+            if (UnityEngine.Random.Range(0, maxLosses - lostRoundInRow) == 0)
             {
                 winRoundInRow++;
                 lostRoundInRow = 0;

@@ -10,7 +10,7 @@ namespace GambaNet.Slots
 
         private void Update()
         {
-            creditText.text = CreditManager.Instance.GetUserBalance();
+            creditText.text = CreditManager.Instance.GetUserBalance() + " CZK";
         }
     }
 }

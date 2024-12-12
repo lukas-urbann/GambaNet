@@ -828,6 +828,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b4e5e2270286a6c4fbcdb6bd5e7d1d7c, type: 2}
   - {fileID: 11400000, guid: 39244c211cba8494fbea0c4cd7c3cd66, type: 2}
   gridParent: {fileID: 1434530359}
+  maxLosses: 16
   rowLights:
   - {fileID: 1723377224}
   - {fileID: 1342596213}
@@ -2373,14 +2374,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27044016, g: 0.04167154, b: 0.04167154, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7443756053782179069, guid: 861ed2fa2a2a9ab44b309a0ae70818de, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
