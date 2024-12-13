@@ -6,6 +6,7 @@ namespace GambaNet.Slots
     public class SlotMachineReel : MonoBehaviour
     {
         public UnityEvent OnReelSwitch;
+        public UnityEvent OnReelFinish = new();
         public static SlotMachineReel Instance;
 
         private void Awake()
@@ -19,6 +20,11 @@ namespace GambaNet.Slots
         public void SwitchReel()
         {
             OnReelSwitch?.Invoke();
+        }
+
+        public void ReelFinish()
+        {
+            OnReelFinish?.Invoke();
         }
     }
 }

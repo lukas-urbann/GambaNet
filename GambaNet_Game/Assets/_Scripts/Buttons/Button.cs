@@ -10,12 +10,18 @@ namespace GambaNet.Buttons
     {
         public bool interactable = true;
         public bool selectOnStart;
+        public bool enableUninteractableEffects = false;
         public UnityEvent OnSelectButton = new();
         public UnityEvent OnDeselectButton = new();
         public UnityEvent OnButtonClick = new();
         public UnityEvent OnButtonEnter = new();
         public UnityEvent OnButtonExit = new();
         private Action selectAction;
+
+        public void SetInteractable(bool value)
+        {
+            interactable = value;
+        }
 
         public void Rig(Action act)
         {
@@ -46,13 +52,13 @@ namespace GambaNet.Buttons
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (!interactable) return;
+            if (!interactable && !enableUninteractableEffects) return;
             OnButtonEnter?.Invoke();
         }
         
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (!interactable) return;
+            if (!interactable && !enableUninteractableEffects) return;
             OnButtonExit?.Invoke();
         }
     }
