@@ -27,11 +27,29 @@ namespace GambaNet.Generic
             
             onConstruct?.Invoke();
         }
-        
+
+        public void Construct<T>(int count, Action<GameObject, T> bind)
+        {
+            if (clearOnConstruct)
+                ClearConstructed();
+
+            for (int i = 0; i < count; i++)
+            {
+                var go = Instantiate(prefab, transform);
+                _constructed.Add(go);
+                bind(go, default);
+            }
+
+            onConstruct?.Invoke();
+        }
+
         public void ClearConstructed()
         {
             foreach (var item in _constructed)
             {
+                if (item == null)
+                    continue;
+
                 item.gameObject.SetActive(false);
                 Destroy(item);
             }
