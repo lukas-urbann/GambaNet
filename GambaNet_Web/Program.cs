@@ -3,8 +3,14 @@ using GambaNet.Infrastructure.Database;
 using Pomelo.EntityFrameworkCore.MySql.Internal;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Culture info
+var cultInfo = new CultureInfo("cs-cz");
+CultureInfo.DefaultThreadCurrentCulture = cultInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultInfo;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -30,10 +36,11 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+//app.UseSession();
 app.UseRouting();
 
+//app.UseAuthentication();
 app.UseAuthorization();
-
 
 app.MapControllerRoute(
     name: "default",
