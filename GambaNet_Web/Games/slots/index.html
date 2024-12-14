@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | PENIZE ZDARMA</title>
+    <title>Unity Web Player | GambaGamesSRO</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=1280 height=1024 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">PENIZE ZDARMA</div>
+        <div id="unity-build-title">GambaGamesSRO</div>
       </div>
     </div>
     <script>
@@ -52,16 +52,16 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/asd.loader.js";
+      var loaderUrl = buildUrl + "/slots.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/asd.data.br",
-        frameworkUrl: buildUrl + "/asd.framework.js.br",
-        codeUrl: buildUrl + "/asd.wasm.br",
+        dataUrl: buildUrl + "/slots.data.unityweb",
+        frameworkUrl: buildUrl + "/slots.framework.js.unityweb",
+        codeUrl: buildUrl + "/slots.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "GambaNet",
-        productName: "PENIZE ZDARMA",
-        productVersion: "1.0",
+        productName: "GambaGamesSRO",
+        productVersion: "69",
         showBanner: unityShowBanner,
       };
 
@@ -98,8 +98,8 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.width = "1280px";
+        canvas.style.height = "1024px";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
