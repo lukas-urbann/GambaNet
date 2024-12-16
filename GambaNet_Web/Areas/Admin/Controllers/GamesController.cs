@@ -1,14 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GambaNet.Domain.Entity;
+using GambaNet.Appliaction.Abstraction;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GambaNet_Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class GamesController : Controller
     {
-        
-        public IActionResult Index()
+        IGameAppService _gameAppService;
+
+        public GamesController(IGameAppService gameAppService)
         {
-            return View();
+            _gameAppService = gameAppService;
+        }
+
+        public IActionResult Select()
+        {
+            IList<Game> games = _gameAppService.Select();
+            return View(games);
         }
     }
 }

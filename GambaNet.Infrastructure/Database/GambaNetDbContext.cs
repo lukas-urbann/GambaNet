@@ -13,7 +13,7 @@ namespace GambaNet.Infrastructure.Database
     public class GambaNetDbContext : DbContext
     {
         public DbSet<TransactionType> TransactionType { get; set; }
-        public DbSet<Game> Game { get; set; }
+        public DbSet<Game> Games { get; set; }
 
 
         public GambaNetDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)

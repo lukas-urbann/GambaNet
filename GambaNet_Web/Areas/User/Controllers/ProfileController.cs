@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace GambaNet_Web.Areas.Admin.Controllers
+namespace GambaNet_Web.Areas.User.Controllers
 {
     [Area("User")]
-    public class ProductController : Controller
+    public class ProfileController : Controller
     {
         
         public IActionResult Index()
