@@ -2,7 +2,7 @@
 
 namespace GambaNet_Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("User")]
     public class ProductController : Controller
     {
         
