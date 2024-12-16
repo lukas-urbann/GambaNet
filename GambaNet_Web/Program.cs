@@ -4,6 +4,8 @@ using Pomelo.EntityFrameworkCore.MySql.Internal;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System.Globalization;
+using GambaNet.Appliaction.Abstraction;
+using GambaNet.Appliaction.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,9 @@ ServerVersion serverVersion = new MySqlServerVersion("8.0.40");
 builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder =>
     optionsBuilder.UseMySql(connectionString, serverVersion,
         b => b.MigrationsAssembly("GambaNet_Web")));
+
+//register services
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
 
