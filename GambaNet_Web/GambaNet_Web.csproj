@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\NováSložka1\**" />
+    <Content Remove="Views\NováSložka1\**" />
+    <EmbeddedResource Remove="Views\NováSložka1\**" />
+    <None Remove="Views\NováSložka1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GambaNet.Appliaction\GambaNet.Appliaction.csproj" />
     <ProjectReference Include="..\GambaNet.Domain\GambaNet.Domain.csproj" />
     <ProjectReference Include="..\GambaNet.Infrastructure\GambaNet.Infrastructure.csproj" />

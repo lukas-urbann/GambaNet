@@ -8,25 +8,31 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/home/jakubk/.nuget/packages/": {}
+    "C:\\Users\\lukas\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/jakubk/RiderProjects/GambaNet/GambaNet.Domain/GambaNet.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Domain\\GambaNet.Domain.csproj",
       "projectName": "GambaNet.Domain",
-      "projectPath": "/home/jakubk/RiderProjects/GambaNet/GambaNet.Domain/GambaNet.Domain.csproj",
-      "packagesPath": "/home/jakubk/.nuget/packages/",
-      "outputPath": "/home/jakubk/RiderProjects/GambaNet/GambaNet.Domain/obj/",
+      "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Domain\\GambaNet.Domain.csproj",
+      "packagesPath": "C:\\Users\\lukas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Domain\\obj\\",
       "projectStyle": "PackageReference",
-      "UsingMicrosoftNETSdk": false,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/jakubk/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -44,7 +50,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -65,7 +72,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/jakubk/.dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
