@@ -3,7 +3,7 @@
 namespace GambaNet_Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ProductController : Controller
+    public class GamesController : Controller
     {
         
         public IActionResult Index()
