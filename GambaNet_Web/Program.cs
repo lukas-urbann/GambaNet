@@ -15,7 +15,7 @@ CultureInfo.DefaultThreadCurrentUICulture = cultInfo;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-string connectionString = builder.Configuration.GetConnectionString("SEQUEL");
+string connectionString = builder.Configuration.GetConnectionString("MySQL");
 ServerVersion serverVersion = new MySqlServerVersion("8.0.40");
 // For later use MySqlOptions options = new MySqlOptions();
 
