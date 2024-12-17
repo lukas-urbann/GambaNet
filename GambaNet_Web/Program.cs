@@ -4,8 +4,8 @@ using Pomelo.EntityFrameworkCore.MySql.Internal;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System.Globalization;
-using GambaNet.Appliaction.Abstraction;
-using GambaNet.Appliaction.Implementation;
+using GambaNet.Application.Abstraction;
+using GambaNet.Application.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 

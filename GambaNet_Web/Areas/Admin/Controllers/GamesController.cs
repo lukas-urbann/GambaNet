@@ -1,5 +1,5 @@
 ﻿using GambaNet.Domain.Entity;
-using GambaNet.Appliaction.Abstraction;
+using GambaNet.Application.Abstraction;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GambaNet_Web.Areas.Admin.Controllers

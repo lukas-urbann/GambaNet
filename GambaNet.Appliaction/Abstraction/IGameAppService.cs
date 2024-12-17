@@ -1,6 +1,6 @@
 ﻿using GambaNet.Domain.Entity;
 
-namespace GambaNet.Appliaction.Abstraction
+namespace GambaNet.Application.Abstraction
 {
     public interface IGameAppService
     {

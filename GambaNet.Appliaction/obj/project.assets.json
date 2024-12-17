@@ -836,9 +836,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet.Appliaction.csproj",
-      "projectName": "GambaNet.Appliaction",
-      "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet.Appliaction.csproj",
+      "projectUniqueName": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet.Application.csproj",
+      "projectName": "GambaNet.Application",
+      "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet.Application.csproj",
       "packagesPath": "C:\\Users\\lukas\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\obj\\",
       "projectStyle": "PackageReference",

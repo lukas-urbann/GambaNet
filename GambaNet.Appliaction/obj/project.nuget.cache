@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k9vzVjEf8SM=",
+  "dgSpecHash": "+5Tu1emqVc8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet.Appliaction.csproj",
+  "projectFilePath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lukas\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\lukas\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.10\\microsoft.entityframeworkcore.8.0.10.nupkg.sha512",

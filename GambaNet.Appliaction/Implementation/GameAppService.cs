@@ -1,8 +1,8 @@
-﻿using GambaNet.Appliaction.Abstraction;
+﻿using GambaNet.Application.Abstraction;
 using GambaNet.Domain.Entity;
 using GambaNet.Infrastructure.Database;
 
-namespace GambaNet.Appliaction.Implementation
+namespace GambaNet.Application.Implementation
 {
     public class GameAppService : IGameAppService
     {
