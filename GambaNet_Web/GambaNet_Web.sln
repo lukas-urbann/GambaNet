@@ -5,13 +5,13 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet_Web", "GambaNet_Web.csproj", "{3E2712FE-1030-44BE-8495-AEA222FB9A5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet.Application", "..\GambaNet.Appliaction\GambaNet.Application.csproj", "{BB0AE313-EE51-4DD3-BA95-808DC938BED6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet_Web.Application", "..\GambaNet.Appliaction\GambaNet_Web.Application.csproj", "{BB0AE313-EE51-4DD3-BA95-808DC938BED6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet.Domain", "..\GambaNet.Domain\GambaNet.Domain.csproj", "{23942314-8E04-4A60-BB38-385FF35015C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet_Web.Domain", "..\GambaNet_Web.Domain\GambaNet_Web.Domain.csproj", "{23942314-8E04-4A60-BB38-385FF35015C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet.Infrastructure", "..\GambaNet.Infrastructure\GambaNet.Infrastructure.csproj", "{9A84D7F3-6FA0-4FD5-A6A3-9E6077E9A5B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet_Web.Infrastructure", "..\GambaNet_Web.Infrastructure\GambaNet_Web.Infrastructure.csproj", "{9A84D7F3-6FA0-4FD5-A6A3-9E6077E9A5B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambeNet_Test", "..\GambeNet_Test\GambeNet_Test.csproj", "{E7ACFAF1-56C0-4489-8259-D22A029703F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambeNet_Web.Test", "..\GambeNet_Web.Test\GambeNet_Web.Test.csproj", "{E7ACFAF1-56C0-4489-8259-D22A029703F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

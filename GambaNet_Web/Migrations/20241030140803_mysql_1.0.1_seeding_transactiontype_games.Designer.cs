@@ -24,7 +24,7 @@ namespace GambaNet_Web.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("GambaNet.Domain.Entity.Game", b =>
+            modelBuilder.Entity("GambaNet_Web.Domain.Entity.Game", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace GambaNet_Web.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GambaNet.Domain.Entity.TransactionType", b =>
+            modelBuilder.Entity("GambaNet_Web.Domain.Entity.TransactionType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

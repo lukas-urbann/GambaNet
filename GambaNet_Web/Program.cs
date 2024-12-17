@@ -4,8 +4,8 @@ using Pomelo.EntityFrameworkCore.MySql.Internal;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System.Globalization;
-using GambaNet.Application.Abstraction;
-using GambaNet.Application.Implementation;
+using GambaNet_Web.Application.Abstraction;
+using GambaNet_Web.Application.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,14 +19,16 @@ builder.Services.AddControllersWithViews();
 
 string connectionString = builder.Configuration.GetConnectionString("MySQL");
 ServerVersion serverVersion = new MySqlServerVersion("8.0.38");
-builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder => optionsBuilder.UseMySql(connectionString, serverVersion));
-// For later use MySqlOptions options = new MySqlOptions();
-
-/*
 builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder =>
-    optionsBuilder.UseMySql(connectionString, serverVersion,
-        b => b.MigrationsAssembly("GambaNet_Web")));
-*/
+    optionsBuilder.UseMySql(
+        connectionString,
+        serverVersion,
+        b =>
+        {
+            b.MigrationsAssembly("GambaNet_Web");
+            b.EnableRetryOnFailure();
+        }));
+
 builder.Services.AddScoped<IGameAppService, GameAppService>();
 
 var app = builder.Build();

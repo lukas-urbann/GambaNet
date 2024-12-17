@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GambaNet.Appliaction\GambaNet.Application.csproj" />
-    <ProjectReference Include="..\GambaNet.Domain\GambaNet.Domain.csproj" />
-    <ProjectReference Include="..\GambaNet.Infrastructure\GambaNet.Infrastructure.csproj" />
+    <ProjectReference Include="..\GambaNet.Appliaction\GambaNet_Web.Application.csproj" />
+    <ProjectReference Include="..\GambaNet_Web.Domain\GambaNet_Web.Domain.csproj" />
+    <ProjectReference Include="..\GambaNet_Web.Infrastructure\GambaNet_Web.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

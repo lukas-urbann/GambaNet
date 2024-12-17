@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GambaNet.Application.ViewModel
+namespace GambaNet_Web.Application.ViewModel
 {
     public class RegisterViewModel
     {

@@ -3,6 +3,7 @@ using GambaNet.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GambaNet_Web.Migrations
 {
     [DbContext(typeof(GambaNetDbContext))]
-    partial class GambaNetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241217152815_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +24,7 @@ namespace GambaNet_Web.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("GambaNet.Domain.Entity.Game", b =>
+            modelBuilder.Entity("GambaNet_Web.Domain.Entity.Game", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,7 +65,7 @@ namespace GambaNet_Web.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GambaNet.Domain.Entity.TransactionType", b =>
+            modelBuilder.Entity("GambaNet_Web.Domain.Entity.TransactionType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

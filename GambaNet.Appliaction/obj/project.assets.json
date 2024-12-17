@@ -298,29 +298,29 @@
           }
         }
       },
-      "GambaNet.Domain/1.0.0": {
+      "GambaNet_Web.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
-          "bin/placeholder/GambaNet.Domain.dll": {}
+          "bin/placeholder/GambaNet_Web.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/GambaNet.Domain.dll": {}
+          "bin/placeholder/GambaNet_Web.Domain.dll": {}
         }
       },
-      "GambaNet.Infrastructure/1.0.0": {
+      "GambaNet_Web.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "GambaNet.Domain": "1.0.0",
+          "GambaNet_Web.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.10",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.2"
         },
         "compile": {
-          "bin/placeholder/GambaNet.Infrastructure.dll": {}
+          "bin/placeholder/GambaNet_Web.Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/GambaNet.Infrastructure.dll": {}
+          "bin/placeholder/GambaNet_Web.Infrastructure.dll": {}
         }
       }
     }
@@ -811,21 +811,21 @@
         "version.txt"
       ]
     },
-    "GambaNet.Domain/1.0.0": {
+    "GambaNet_Web.Domain/1.0.0": {
       "type": "project",
-      "path": "../GambaNet.Domain/GambaNet.Domain.csproj",
-      "msbuildProject": "../GambaNet.Domain/GambaNet.Domain.csproj"
+      "path": "../GambaNet_Web.Domain/GambaNet_Web.Domain.csproj",
+      "msbuildProject": "../GambaNet_Web.Domain/GambaNet_Web.Domain.csproj"
     },
-    "GambaNet.Infrastructure/1.0.0": {
+    "GambaNet_Web.Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../GambaNet.Infrastructure/GambaNet.Infrastructure.csproj",
-      "msbuildProject": "../GambaNet.Infrastructure/GambaNet.Infrastructure.csproj"
+      "path": "../GambaNet_Web.Infrastructure/GambaNet_Web.Infrastructure.csproj",
+      "msbuildProject": "../GambaNet_Web.Infrastructure/GambaNet_Web.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "GambaNet.Domain >= 1.0.0",
-      "GambaNet.Infrastructure >= 1.0.0",
+      "GambaNet_Web.Domain >= 1.0.0",
+      "GambaNet_Web.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Http.Features >= 5.0.17"
     ]
   },
@@ -836,9 +836,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet.Application.csproj",
-      "projectName": "GambaNet.Application",
-      "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet.Application.csproj",
+      "projectUniqueName": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet_Web.Application.csproj",
+      "projectName": "GambaNet_Web.Application",
+      "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet_Web.Application.csproj",
       "packagesPath": "C:\\Users\\lukas\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\obj\\",
       "projectStyle": "PackageReference",
@@ -861,11 +861,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Domain\\GambaNet.Domain.csproj": {
-              "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Domain\\GambaNet.Domain.csproj"
+            "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet_Web.Domain\\GambaNet_Web.Domain.csproj": {
+              "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet_Web.Domain\\GambaNet_Web.Domain.csproj"
             },
-            "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Infrastructure\\GambaNet.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Infrastructure\\GambaNet.Infrastructure.csproj"
+            "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet_Web.Infrastructure\\GambaNet_Web.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet_Web.Infrastructure\\GambaNet_Web.Infrastructure.csproj"
             }
           }
         }
