@@ -19,5 +19,31 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             IList<Game> games = _gameAppService.Select();
             return View(games);
         }
+        
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult Create(Game game)
+        {
+            _gameAppService.Create(game);
+            return RedirectToAction(nameof(GamesController.Select));
+        }
+        
+        public IActionResult Delete(int id)
+        {
+            bool deleted = _gameAppService.Delete(id);
+            if (deleted)
+            {
+                return RedirectToAction(nameof(GamesController.Select));
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

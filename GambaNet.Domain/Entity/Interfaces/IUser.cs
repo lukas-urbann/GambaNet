@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GambaNet.Domain.Entity.Interfaces
 {
+    //Tady pak bude list transakcí (historii výher/proher/dobití kreditu)
     public interface IUser<TKey> : IEntity<TKey>
     {
         string? UserName { get; set; }

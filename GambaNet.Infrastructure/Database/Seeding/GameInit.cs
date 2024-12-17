@@ -17,15 +17,11 @@ namespace GambaNet.Infrastructure.Database.Seeding
                 {
                     Id = 1,
                     Name = "Casiino",
-                    MinBet = 10,
-                    MaxBet = 1000
                 },
                 new Game
                 {
                     Id = 2,
                     Name = "Cassino roon",
-                    MinBet = 10,
-                    MaxBet = 1000
                 }
             };
 

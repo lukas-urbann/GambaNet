@@ -1,4 +1,40 @@
-﻿@{
-    ViewData["Title"] = "GambaGame Administration";
+﻿@model IList<Game>
+
+@{
+        ViewData["Title"] = "Games Administration";
 }
+
 <h1>@ViewData["Title"]</h1>
+
+<a asp-action="Create">Create Game</a>
+
+@{
+        if (Model != null && Model.Count > 0)
+        {
+                <table class="table">
+                        <thead>
+                        <tr>
+                                <th scope="col">@nameof(Game.Id)</th>
+                                <th scope="col">@nameof(Game.Name)</th>
+                                <th scope="col">@nameof(Game.Description)</th>
+                                <th scope="col">Delete</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var g in Model)
+                        {
+                        <tr>
+                                <th scope="row">@g.Id</th>
+                                <td>@g.Name</td>
+                                <td>@g.Description</td>
+                                <td><a asp-action="Delete" asp-route-id="@g.Id">Delete</a></td>
+                        </tr>
+                        }
+                </tbody>
+                </table>
+        }
+        else
+        {
+                <p>Game table is empty!</p>
+        }
+}

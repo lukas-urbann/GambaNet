@@ -15,7 +15,6 @@ namespace GambaNet.Infrastructure.Database
         public DbSet<TransactionType> TransactionType { get; set; }
         public DbSet<Game> Games { get; set; }
 
-
         public GambaNetDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
         }

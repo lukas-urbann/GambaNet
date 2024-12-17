@@ -18,13 +18,15 @@ CultureInfo.DefaultThreadCurrentUICulture = cultInfo;
 builder.Services.AddControllersWithViews();
 
 string connectionString = builder.Configuration.GetConnectionString("MySQL");
-ServerVersion serverVersion = new MySqlServerVersion("8.0.40");
+ServerVersion serverVersion = new MySqlServerVersion("8.0.38");
+builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder => optionsBuilder.UseMySql(connectionString, serverVersion));
 // For later use MySqlOptions options = new MySqlOptions();
 
+/*
 builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder =>
     optionsBuilder.UseMySql(connectionString, serverVersion,
         b => b.MigrationsAssembly("GambaNet_Web")));
-
+*/
 builder.Services.AddScoped<IGameAppService, GameAppService>();
 
 var app = builder.Build();

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace GambaNet.Domain.Entity
 {
+    //bylo by dobré mít nějaký hlavní účet kterýmu se budou posílat
+    //prohraný peníze z gamby
     [Table(nameof(Transaction))]
     public class Transaction : Entity<int>
     {

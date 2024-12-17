@@ -11,8 +11,6 @@ namespace GambaNet.Domain.Entity
     public class Game : Entity<int>
     {
         public string Name { get; set; }
-        public Decimal MinBet { get; set; }
-        public Decimal MaxBet { get; set; }
-
+        public string Description { get; set; }
     }
 }
