@@ -12,9 +12,6 @@
     <form asp-action="Login" method="post" class="form-signin">
         <br />
         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login</h1>
-        <br />
-        <p style="text-align:center">OR</p>
-        <hr>
         @{
             if (Model?.LoginFailed == true)
             {
@@ -30,11 +27,6 @@
         <div class="text-center">
             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
         </div>
-        <br />
-        <br />
-        <hr>
-        <!-- <p>Don't have an account!</p>  -->
-        <a asp-action="Register" class="btn btn-primary btn-block text-white" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</a>
     </form>
 </div>
 
