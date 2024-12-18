@@ -1,21 +1,26 @@
 using GambaNet_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using GambaNet_Web.Application.Abstraction;
+using GambaNet_Web.Application.ViewModel;
 
 namespace GambaNet_Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        IHomeService _homeService;
+        
+        public HomeController(ILogger<HomeController> logger, IHomeService homeService)
         {
             _logger = logger;
+            _homeService = homeService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            GameViewModel gameModel = _homeService.GetIndexViewModel();
+            return View(gameModel);
         }
 
         public IActionResult Privacy()

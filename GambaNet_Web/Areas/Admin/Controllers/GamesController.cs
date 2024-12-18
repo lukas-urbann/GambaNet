@@ -1,10 +1,13 @@
-﻿using GambaNet.Domain.Entity;
+﻿using GambaNet_Web.Domain.Entity;
 using GambaNet_Web.Application.Abstraction;
+using GambaNet.Infrastructure.Identity.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GambaNet_Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = nameof(Roles.Admin))]
     public class GamesController : Controller
     {
         IGameAppService _gameAppService;
@@ -29,8 +32,13 @@ namespace GambaNet_Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(Game game)
         {
-            _gameAppService.Create(game);
-            return RedirectToAction(nameof(GamesController.Select));
+            if (ModelState.IsValid)
+            {
+                _gameAppService.Create(game);
+                return RedirectToAction(nameof(GamesController.Select));
+            }
+
+            return View(game);
         }
         
         public IActionResult Delete(int id)

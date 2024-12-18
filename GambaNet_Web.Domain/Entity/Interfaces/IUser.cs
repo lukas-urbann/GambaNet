@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GambaNet.Domain.Entity.Interfaces
+namespace GambaNet_Web.Domain.Entity.Interfaces
 {
     //Tady pak bude list transakcí (historii výher/proher/dobití kreditu)
     public interface IUser<TKey> : IEntity<TKey>

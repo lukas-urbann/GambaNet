@@ -27,7 +27,7 @@
                                 <th scope="row">@g.Id</th>
                                 <td>@g.Name</td>
                                 <td>@g.Description</td>
-                                <td><a asp-action="Delete" asp-route-id="@g.Id">Delete</a></td>
+                                <td><a asp-action="Delete" asp-route-id="@g.Id" onclick="return ConfirmDelete();">Delete</a></td>
                         </tr>
                         }
                 </tbody>

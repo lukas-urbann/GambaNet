@@ -1,4 +1,6 @@
-﻿@{
+﻿@model GambaNet_Web.Application.ViewModel.GameViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -15,15 +17,34 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Hry</a>
                         <ul>
-                            <li>
+                            @{
+                                if (Model.Games != null && Model.Games.Count > 0)
+                                { 
+                                    IList<Game> g = Model.Games;
+
+                                    foreach (var game in g)
+                                    {
+                                        <li>
+                                            <a class="nav-link" asp-area="" asp-controller="Games" asp-action="@game.Name">@game.Name</a>
+                                        </li>
+                                    }
+                                }
+                            }
+                            @{
+                                /*
+                                 
+                                 <li>
                                 <a class="nav-link" asp-area="" asp-controller="" asp-action="">Hrací automat</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" asp-area="" asp-controller="" asp-action="">Skořápky</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" asp-area="" asp-controller="" asp-action="">Plinko</a>
-                            </li>
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="" asp-controller="" asp-action="">Skořápky</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="" asp-controller="" asp-action="">Plinko</a>
+                                </li>
+                                 
+                                 */
+                            }
                         </ul>
                     </li>
                     <li>
@@ -41,3 +62,14 @@
         </div>
     </div>
 </div>
+
+
+
+@{
+/*
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/shop_home.css" asp-append-version="true" />
+}
+*/
+}

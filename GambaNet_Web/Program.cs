@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using GambaNet.Infrastructure.Database;
+using GambaNet_Web.Infrastructure.Database;
 using Pomelo.EntityFrameworkCore.MySql.Internal;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System.Globalization;
 using GambaNet_Web.Application.Abstraction;
 using GambaNet_Web.Application.Implementation;
+using GambaNet.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +31,36 @@ builder.Services.AddDbContext<GambaNetDbContext>(optionsBuilder =>
             b.EnableRetryOnFailure();
         }));
 
+builder.Services.AddIdentity<User, Role>()
+    .AddEntityFrameworkStores<GambaNetDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 1;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequiredUniqueChars = 1;
+    options.Lockout.AllowedForNewUsers = true;
+    options.Lockout.MaxFailedAccessAttempts = 10;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+    options.User.RequireUniqueEmail = true;
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    options.LoginPath = "/Security/Account/Login";
+    options.LogoutPath = "/Security/Account/Logout";
+    options.SlidingExpiration = true;
+});
+
 builder.Services.AddScoped<IGameAppService, GameAppService>();
+builder.Services.AddScoped<IHomeService, HomeService>();
+builder.Services.AddScoped<IAccountService, AccountIdentityService>();
 
 var app = builder.Build();
 
@@ -47,7 +78,7 @@ app.UseStaticFiles();
 //app.UseSession();
 app.UseRouting();
 
-//app.UseAuthentication();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

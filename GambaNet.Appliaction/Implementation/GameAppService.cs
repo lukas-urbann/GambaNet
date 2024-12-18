@@ -1,6 +1,6 @@
 ﻿using GambaNet_Web.Application.Abstraction;
-using GambaNet.Domain.Entity;
-using GambaNet.Infrastructure.Database;
+using GambaNet_Web.Domain.Entity;
+using GambaNet_Web.Infrastructure.Database;
 
 namespace GambaNet_Web.Application.Implementation
 {

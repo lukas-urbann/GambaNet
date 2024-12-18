@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GambaNet.Domain.Entity.Interfaces
+namespace GambaNet_Web.Domain.Entity.Interfaces
 {
     public interface IEntity<TKey>
     {

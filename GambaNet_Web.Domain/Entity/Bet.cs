@@ -5,10 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GambaNet_Web.Domain.Entity.Interfaces;
 
-using GambaNet.Domain.Entity.Interfaces;
-
-namespace GambaNet.Domain.Entity
+namespace GambaNet_Web.Domain.Entity
 {
     [Table(nameof(Bet))]
     public class Bet : Entity<int>

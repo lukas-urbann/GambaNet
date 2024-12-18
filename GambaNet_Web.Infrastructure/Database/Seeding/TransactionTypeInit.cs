@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GambaNet_Web.Domain.Entity;
 
-using GambaNet.Domain.Entity;
-
-namespace GambaNet.Infrastructure.Database.Seeding
+namespace GambaNet_Web.Infrastructure.Database.Seeding
 {
     internal class TransactionTypeInit
     {

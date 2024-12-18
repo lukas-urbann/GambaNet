@@ -1,13 +1,13 @@
-﻿using GambaNet.Domain.Entity.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GambaNet_Web.Domain.Entity.Interfaces;
 
-namespace GambaNet.Domain.Entity
+namespace GambaNet_Web.Domain.Entity
 {
     //bylo by dobré mít nějaký hlavní účet kterýmu se budou posílat
     //prohraný peníze z gamby
