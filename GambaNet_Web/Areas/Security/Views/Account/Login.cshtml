@@ -1,6 +1,6 @@
 ﻿@model LoginViewModel
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Přihlášení";
 }
 
 @section Styles
@@ -11,21 +11,22 @@
 <div id="logreg-forms">
     <form asp-action="Login" method="post" class="form-signin">
         <br />
-        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login</h1>
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Přihlášení uživatele</h1>
         @{
             if (Model?.LoginFailed == true)
             {
-                <div class="text-danger">Login Failed!</div>
+                <div class="text-danger">Přihlášení selhalo!</div>
             }
         }
         <div asp-validation-summary="All" class="text-danger"></div>
-        <input asp-for="Username" type="text" id="inputUsername" class="form-control" placeholder="Usename" autofocus="">
+        <input asp-for="Username" type="text" id="inputUsername" class="form-control" placeholder="Uživatelské jméno" autofocus="">
         <span asp-validation-for="Username" class="text-danger"></span>
-        <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password">
+        <br />
+        <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Heslo">
         <span asp-validation-for="Password" class="text-danger"></span>
         <br />
         <div class="text-center">
-            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+            <button class="btn btn-success btn-block" type="submit">Přihlásit</button>
         </div>
     </form>
 </div>
