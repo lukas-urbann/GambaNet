@@ -18,11 +18,6 @@ namespace GambaNet_Web.Infrastructure.Database.Seeding
                     UserId = 1,
                     RoleId = 2
                 },
-                new IdentityUserRole<int>()
-                {
-                    UserId = 1,
-                    RoleId = 3
-                }
             };
             
             return adminUserRoles;
@@ -37,11 +32,6 @@ namespace GambaNet_Web.Infrastructure.Database.Seeding
                     UserId = 2,
                     RoleId = 2
                 },
-                new IdentityUserRole<int>()
-                {
-                    UserId = 2,
-                    RoleId = 3
-                }
             };
             
             return defaultUserRoles;

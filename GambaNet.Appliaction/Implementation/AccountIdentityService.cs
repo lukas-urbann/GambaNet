@@ -1,8 +1,8 @@
-﻿using GambaNet_Web.Application.Abstraction;
+﻿using Microsoft.AspNetCore.Identity;
+using GambaNet_Web.Application.Abstraction;
 using GambaNet_Web.Application.ViewModel;
 using GambaNet.Infrastructure.Identity;
 using GambaNet.Infrastructure.Identity.Enums;
-using Microsoft.AspNetCore.Identity;
 
 namespace GambaNet_Web.Application.Implementation
 {
@@ -29,13 +29,19 @@ namespace GambaNet_Web.Application.Implementation
             User user = new User()
             {
                 UserName = vm.Username,
+                FirstName = vm.FirstName,
+                LastName = vm.LastName,
                 Email = vm.Email,
                 PhoneNumber = vm.Phone,
                 StartDate = DateTime.Now,
                 Balance = 0
             };
+
+            User novy = user;
+            
+            
             string[] errors = null;
-            var result = await userManager.CreateAsync(user, vm.Password);
+            var result = await userManager.CreateAsync(novy, vm.Password);
             if (result.Succeeded)
             {
                 foreach (var role in roles)

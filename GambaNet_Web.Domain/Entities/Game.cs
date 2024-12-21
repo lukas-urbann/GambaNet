@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GambaNet.Domain.Validations;
 
-namespace GambaNet_Web.Domain.Entity
+namespace GambaNet_Web.Domain.Entities
 {
     [Table(nameof(Game))]
     public class Game : Entity<int>

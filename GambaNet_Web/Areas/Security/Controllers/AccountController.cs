@@ -25,7 +25,7 @@ namespace GambaNet_Web.Areas.Security.Controllers
         {
             if (ModelState.IsValid)
             {
-                string[] errors = await _accountService.Register(registerVM, Roles.Customer);
+                string[] errors = await _accountService.Register(registerVM, Roles.Default);
                 if (errors == null)
                 {
                     //login the user after registration

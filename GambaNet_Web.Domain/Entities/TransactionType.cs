@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GambaNet_Web.Domain.Entity
+namespace GambaNet_Web.Domain.Entities
 {
     [Table(nameof(TransactionType))]
     public class TransactionType : Entity<int>

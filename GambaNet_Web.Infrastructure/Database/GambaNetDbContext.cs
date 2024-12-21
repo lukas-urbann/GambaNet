@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GambaNet_Web.Domain.Entity;
+using GambaNet_Web.Domain.Entities;
 using GambaNet_Web.Infrastructure.Database.Seeding;
 using GambaNet.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace GambaNet_Web.Infrastructure.Database
@@ -29,6 +30,21 @@ namespace GambaNet_Web.Infrastructure.Database
             
             TransactionTypeInit transactionTypeInit = new TransactionTypeInit();
             modelBuilder.Entity<TransactionType>().HasData(transactionTypeInit.GetTransactionTypes());
+            
+            RolesInit rolesInit = new RolesInit();
+            modelBuilder.Entity<Role>().HasData(rolesInit.GetRolesAD());
+
+            UserInit userInit = new UserInit();
+            User admin = userInit.GetAdmin();
+            User def = userInit.GetDefault();
+
+            modelBuilder.Entity<User>().HasData(admin, def);
+
+            UserRolesInit userRolesInit = new UserRolesInit();
+            List<IdentityUserRole<int>> adminUserRoles = userRolesInit.GetRolesForAdmin();
+            List<IdentityUserRole<int>> managerUserRoles = userRolesInit.GetRolesForDefault();
+            modelBuilder.Entity<IdentityUserRole<int>>().HasData(adminUserRoles);
+            modelBuilder.Entity<IdentityUserRole<int>>().HasData(managerUserRoles);
         }
     }
 }

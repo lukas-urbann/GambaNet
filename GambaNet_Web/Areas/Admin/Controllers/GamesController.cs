@@ -1,4 +1,4 @@
-﻿using GambaNet_Web.Domain.Entity;
+﻿using GambaNet_Web.Domain.Entities;
 using GambaNet_Web.Application.Abstraction;
 using GambaNet.Infrastructure.Identity.Enums;
 using Microsoft.AspNetCore.Authorization;

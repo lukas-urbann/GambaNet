@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GambaNet_Web.Migrations
 {
     [DbContext(typeof(GambaNetDbContext))]
-    [Migration("20241218121645_InitialCreate4")]
-    partial class InitialCreate4
+    [Migration("20241221225450_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,6 +52,22 @@ namespace GambaNet_Web.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
+                            Name = "Default",
+                            NormalizedName = "DEFAULT"
+                        });
                 });
 
             modelBuilder.Entity("GambaNet.Infrastructure.Identity.User", b =>
@@ -79,6 +95,12 @@ namespace GambaNet_Web.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("longtext");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
 
@@ -92,9 +114,6 @@ namespace GambaNet_Web.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("longtext");
@@ -128,9 +147,51 @@ namespace GambaNet_Web.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            Balance = 9999m,
+                            ConcurrencyStamp = "b09a83ae-cfd3-4ee7-97e6-fbcf0b0fe78c",
+                            Email = "admin@admin.cz",
+                            EmailConfirmed = true,
+                            FirstName = "Adminek",
+                            LastName = "Adminovy",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "ADMIN@ADMIN.CZ",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM9O98Suoh2o2JOK1ZOJScgOfQ21odn/k6EYUpGWnrbevCaBFFXrNL7JZxHNczhh/w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "SEJEPXC646ZBNCDYSM3H5FRK5RWP2TN6",
+                            StartDate = new DateTime(2024, 12, 21, 23, 54, 50, 75, DateTimeKind.Local).AddTicks(5691),
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            Balance = 100m,
+                            ConcurrencyStamp = "7a8d96fd-5918-441b-b800-cbafa99de97b",
+                            Email = "manager@manager.cz",
+                            EmailConfirmed = true,
+                            FirstName = "Managerek",
+                            LastName = "Managerovy",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "MANAGER@MANAGER.CZ",
+                            NormalizedUserName = "MANAGER",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOzeajp5etRMZn7TWj9lhDMJ2GSNTtljLWVIWivadWXNMz8hj6mZ9iDR+alfEUHEMQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "MAJXOSATJKOEM4YFF32Y5G2XPR5OFEL6",
+                            StartDate = new DateTime(2024, 12, 21, 23, 54, 50, 75, DateTimeKind.Local).AddTicks(5763),
+                            TwoFactorEnabled = false,
+                            UserName = "manager"
+                        });
                 });
 
-            modelBuilder.Entity("GambaNet_Web.Domain.Entity.Game", b =>
+            modelBuilder.Entity("GambaNet_Web.Domain.Entities.Game", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -171,7 +232,7 @@ namespace GambaNet_Web.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GambaNet_Web.Domain.Entity.TransactionType", b =>
+            modelBuilder.Entity("GambaNet_Web.Domain.Entities.TransactionType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -287,6 +348,23 @@ namespace GambaNet_Web.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            RoleId = 2
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>

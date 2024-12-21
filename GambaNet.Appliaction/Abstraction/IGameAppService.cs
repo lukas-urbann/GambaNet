@@ -1,4 +1,4 @@
-﻿using GambaNet_Web.Domain.Entity;
+﻿using GambaNet_Web.Domain.Entities;
 
 namespace GambaNet_Web.Application.Abstraction
 {

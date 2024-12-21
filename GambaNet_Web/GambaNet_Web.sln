@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet_Web.Domain", "..\G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet_Web.Infrastructure", "..\GambaNet_Web.Infrastructure\GambaNet_Web.Infrastructure.csproj", "{9A84D7F3-6FA0-4FD5-A6A3-9E6077E9A5B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambeNet_Web.Test", "..\GambeNet_Web.Test\GambeNet_Web.Test.csproj", "{E7ACFAF1-56C0-4489-8259-D22A029703F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GambaNet_Web.Test", "..\GambaNet_Web.Test\GambaNet_Web.Test.csproj", "{E7ACFAF1-56C0-4489-8259-D22A029703F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

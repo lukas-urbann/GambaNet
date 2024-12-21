@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GambaNet_Web.Domain.Entity.Interfaces;
+using GambaNet_Web.Domain.Entities.Interfaces;
 
-namespace GambaNet_Web.Domain.Entity
+namespace GambaNet_Web.Domain.Entities
 {
     //bylo by dobré mít nějaký hlavní účet kterýmu se budou posílat
     //prohraný peníze z gamby

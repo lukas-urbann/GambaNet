@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GambaNet_Web.Domain.Entity;
+using GambaNet_Web.Domain.Entities;
 
 namespace GambaNet_Web.Infrastructure.Database.Seeding
 {

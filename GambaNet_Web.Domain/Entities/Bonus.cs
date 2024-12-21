@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GambaNet_Web.Domain.Entity.Interfaces;
+using GambaNet_Web.Domain.Entities.Interfaces;
 
-namespace GambaNet_Web.Domain.Entity
+namespace GambaNet_Web.Domain.Entities
 {
     [Table(nameof(Bonus))]
     public class Bonus : Entity<int>
