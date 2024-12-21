@@ -30,30 +30,20 @@
                                     }
                                 }
                             }
-                            @{
-                                /*
-                                 
-                                 <li>
-                                <a class="nav-link" asp-area="" asp-controller="" asp-action="">Hrací automat</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" asp-area="" asp-controller="" asp-action="">Skořápky</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" asp-area="" asp-controller="" asp-action="">Plinko</a>
-                                </li>
-                                 
-                                 */
-                            }
                         </ul>
                     </li>
                     <li>
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Soukromí</a>
                     </li>
-                    <li>
-                        <a class="nav-link" asp-area="" asp-controller="" asp-action="">Uživatelské centrum</a>
-                    </li>
-                </ul>
+                    @{
+                        @if (User.Identity is { IsAuthenticated: false })
+                        {
+                            <li>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Info">Uživatelské centrum</a>
+                            </li>
+                        }
+                    }
+                    </ul>
             </div>
 
             <div class="col">

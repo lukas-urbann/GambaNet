@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GambaNet_Web.Domain.Entities;
 using GambaNet_Web.Infrastructure.Database.Seeding;
 using GambaNet.Infrastructure.Identity;

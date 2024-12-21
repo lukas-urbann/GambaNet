@@ -22,7 +22,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="" asp-action="">Hry</a>
+                            <a class="nav-link" asp-area="" asp-controller="Games" asp-action="">Hry</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Soukromí</a>
@@ -30,7 +30,7 @@
                         @if (User.Identity.IsAuthenticated == true && (User.IsInRole(nameof(Roles.Admin)) || User.IsInRole(nameof(Roles.Default))))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="" asp-action="">Uživatelské centrum</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Info">Uživatelské centrum</a>
                             </li>
                         }
                         @if (User.Identity.IsAuthenticated == true && (User.IsInRole(nameof(Roles.Admin))))
@@ -46,17 +46,16 @@
                         @if (User.Identity is { IsAuthenticated: false })
                         {
                             <span style="padding-right:16px;">
-                                <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Login">Login</a>
+                                <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Login">Přihlásit</a>
                             </span>
                             <span>
-                                <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Register">Register</a>
+                                <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Register">Registrovat</a>
                             </span>
                         }
                         else
                         {
                             <span style="padding-right:16px;">
-                                <a class="nav-link">@User.Identity.Name</a>
-                                <a class="dropdown-item" asp-area="Security" asp-controller="Account" asp-action="Logout">Logout</a>
+                                <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Logout">Odhlásit se (@User.Identity.Name)</a>
                             </span>
                         }
                     }
