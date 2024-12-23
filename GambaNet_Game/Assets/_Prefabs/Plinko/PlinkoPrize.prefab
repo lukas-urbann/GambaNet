@@ -103,6 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   betMultiplicator: 0.31
+  onPrizeBorderHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &5760332164296482782
 Rigidbody2D:
   serializedVersion: 5

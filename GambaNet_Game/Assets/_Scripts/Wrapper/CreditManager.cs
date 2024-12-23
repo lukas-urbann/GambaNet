@@ -33,11 +33,12 @@ namespace GambaNet.Wrapper
             return _localUserBalance;
         }
 
-        private bool UploadUserBalance()
+        private void UploadUserBalance()
         {
             //TODO: Doplnit tělo, musí to poslat ten float do databáze
             //Pošleme lokální hodnotu do databáze a user balance se s tím zesynchronizuje
-            return false;
+            
+
         }
 
         public void UpdateBalance(float amount)
