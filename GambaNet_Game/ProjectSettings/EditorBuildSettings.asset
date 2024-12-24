@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/Cups.unity
     guid: 82ba7a7c01bcc3f48bc8c09637de22da
   - enabled: 0
     path: Assets/_Scenes/Slots.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Plinko.unity
     guid: 67ba7f412a6286447a42da59b4e3bc36
   m_configObjects:

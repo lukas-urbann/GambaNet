@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace GambaNet.Wrapper
@@ -8,30 +9,45 @@ namespace GambaNet.Wrapper
     {
         public TMP_Text gameName;
         public Image gameBackground;
-        public GameObject dataLoadLock;
+        public Vector3 backgroundRGB = Vector3.zero;
+        public UnityEvent<int> setWinRate = new();
 
-        private Vector3 backgroundRGB = Vector3.zero;
-
-        private string loadedGameName;
-        private double loadedWinrate;
-        
-        private void Awake()
+        public void SetRed(float value)
         {
-            dataLoadLock.SetActive(true);
+            backgroundRGB.x = value;
+            ApplyColor();
         }
 
-        public void SetRed(float value) => backgroundRGB.x = value;
-        public void SetGreen(float value) => backgroundRGB.y = value;
-        public void SetBlue(float value) => backgroundRGB.z = value;
-        public void ApplyColor() => gameBackground.color = new Color(backgroundRGB.x, backgroundRGB.y, backgroundRGB.z);
-        public void SetName(string val) => loadedGameName = val;
-        public void SetWinrate(double val) => loadedWinrate = val;
-
-        public void DataLoadComplete()
+        public void SetGreen(float value)
         {
-            gameName.text = loadedGameName;
+            backgroundRGB.y = value;
             ApplyColor();
-            dataLoadLock.SetActive(false);
+        }
+
+        public void SetBlue(float value)
+        {
+            backgroundRGB.z = value;
+            ApplyColor();
+        }
+
+        private void ApplyColor()
+        {
+            backgroundRGB.x /= 255;
+            backgroundRGB.y /= 255;
+            backgroundRGB.z /= 255;
+
+            gameBackground.color = new Color(backgroundRGB.x, backgroundRGB.y, backgroundRGB.z);
+            gameName.color = new Color(1 - backgroundRGB.x, 1 - backgroundRGB.y, 1 - backgroundRGB.z);
+        }
+
+        public void SetName(string val)
+        {
+            gameName.text = val;
+        }
+
+        public void SetWinrate(int val)
+        {
+            setWinRate?.Invoke(val);
         }
     }
 }
