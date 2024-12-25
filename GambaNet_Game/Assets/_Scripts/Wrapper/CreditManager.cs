@@ -7,8 +7,9 @@ namespace GambaNet.Wrapper
     {
         public static CreditManager Instance;
         
-        private float UserBalance => LoadUserBalance();
-        private float _localUserBalance;
+        private double UserBalance => LoadUserBalance();
+        private double _localUserBalance;
+        private int userId = 1;
 
         private void Awake()
         {
@@ -27,18 +28,17 @@ namespace GambaNet.Wrapper
             _localUserBalance = UserBalance;
         }
 
-        private float LoadUserBalance()
+        private double LoadUserBalance()
         {
-            //TODO: Doplnit tělo, musí to načítat přímo z databáze a musí to tím pádem k ní mít konstantní přístup
-            return _localUserBalance;
+            string balance = WebWrapper.PostGetUserBalance(WebWrapper.RequestReturnType.UserBalanceDownload, userId: this.userId);
+            return double.Parse(balance, CultureInfo.InvariantCulture);
         }
 
         private void UploadUserBalance()
         {
-            //TODO: Doplnit tělo, musí to poslat ten float do databáze
-            //Pošleme lokální hodnotu do databáze a user balance se s tím zesynchronizuje
-            
-
+            string balance = _localUserBalance.ToString("F30", CultureInfo.InvariantCulture).Replace(",", ".");
+            Debug.Log(balance);
+            Debug.Log(WebWrapper.PostGetUserBalance(WebWrapper.RequestReturnType.UserBalanceUpload, userId: this.userId, newValue: balance));
         }
 
         public void UpdateBalance(float amount)

@@ -1,13 +1,6 @@
 mergeInto(LibraryManager.library,
 {
-/* -- Template function
-  Hello: function () {
-    window.alert("Hello, world!");
+ LoadUserId: function () {
+    window.alert("Getting user id");
   },
-*/
-
- UploadUserBalance: function (balance) {
-    window.alert("Uploading user balance... " + balance);
-  },
-
 });
