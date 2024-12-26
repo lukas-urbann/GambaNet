@@ -16,13 +16,19 @@ namespace GambaNet.Slots
         [SerializeField] private List<BonusType> possibleBonusTypes = new(); // List of possible bonuses
         private SlotBonus[,] slotBonuses = new SlotBonus[5, 5]; // 2D array of SlotBonus objects
         public GameObject gridParent;
-        private int lostRoundInRow = 0;
-        private int winRoundInRow = 0;
-        public int maxLosses = 16;
+        //private int lostRoundInRow = 0;
+        //private int winRoundInRow = 0;
+        //public int maxLosses = 16;
         public List<GameObject> rowLights = new();
         private float betAmount;
         public UnityEvent OnWin;
-        
+        [SerializeField] private int winratePercentage = 100;
+
+        public void SetWinningChange(int percentage)
+        {
+            winratePercentage = percentage;
+        }
+
         public void SetBetAmount(float amount) => betAmount = amount;
 
         private void Awake()
@@ -130,6 +136,14 @@ namespace GambaNet.Slots
 
         private bool GetWinChance()
         {
+            var random = new Random();
+            var randomValue = random.Next(0, 100);
+            return randomValue < winratePercentage;
+        }
+
+        /*
+        private bool GetWinChance()
+        {
             if (winRoundInRow > 1)
             {
                 winRoundInRow = 0;
@@ -155,5 +169,6 @@ namespace GambaNet.Slots
             lostRoundInRow++;
             return false;
         }
+        */
     }
 }

@@ -9,7 +9,6 @@ namespace GambaNet.Wrapper
         
         private double UserBalance => LoadUserBalance();
         private double _localUserBalance;
-        private int userId = 1;
 
         private void Awake()
         {
@@ -30,15 +29,24 @@ namespace GambaNet.Wrapper
 
         private double LoadUserBalance()
         {
-            string balance = WebWrapper.PostGetUserBalance(WebWrapper.RequestReturnType.UserBalanceDownload, userId: this.userId);
+            if (!WebWrapper.HasConnection)
+            {
+                return 0;
+            }
+
+            string balance = WebWrapper.GetDataPostRequest(WebWrapper.RequestReturnType.UserBalanceDownload, userId: WebWrapper.LoadUserId());
             return double.Parse(balance, CultureInfo.InvariantCulture);
         }
 
         private void UploadUserBalance()
         {
+            if (!WebWrapper.HasConnection)
+            {
+                return;
+            }
+
             string balance = _localUserBalance.ToString("F30", CultureInfo.InvariantCulture).Replace(",", ".");
-            Debug.Log(balance);
-            Debug.Log(WebWrapper.PostGetUserBalance(WebWrapper.RequestReturnType.UserBalanceUpload, userId: this.userId, newValue: balance));
+            WebWrapper.GetDataPostRequest(WebWrapper.RequestReturnType.UserBalanceUpload, userId: WebWrapper.LoadUserId(), newValue: balance);
         }
 
         public void UpdateBalance(float amount)
@@ -46,7 +54,12 @@ namespace GambaNet.Wrapper
             _localUserBalance += amount;
             UploadUserBalance();
         }
-        
+
+        public bool HasEnoughBalance(float amount)
+        {
+            return _localUserBalance >= amount;
+        }
+
         public string GetUserBalance()
         {
             return _localUserBalance.ToString("F2", CultureInfo.InvariantCulture);

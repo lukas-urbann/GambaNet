@@ -8,6 +8,7 @@ public class WebWrapper : MonoBehaviour
 {
     private static string databaseUrl = "http://localhost/phpdatabaze/";
     private static string dataloaderUrl = "dataloader.php";
+    public static bool HasConnection;
 
     public enum RequestReturnType
     {
@@ -17,29 +18,45 @@ public class WebWrapper : MonoBehaviour
         GameDataWinrateDownload,
         GameDataNameDownload,
 
-        GameDataColorRedownload,
+        GameDataColorRedDownload,
         GameDataColorBlueDownload,
         GameDataColorGreenDownload,
     }
 
-    private void Start()
+    private void Awake()
     {
-        //StartCoroutine(GetGameData());
-        //Debug.Log(PostGetUserBalance(RequestReturnType.UserBalanceDownload, userId: 1));
-        //Debug.Log(PostGetUserBalance(RequestReturnType.UserBalanceUpload, userId: 1, newValue:555));
-        
-
-        //Debug.Log(PostGetUserBalance(RequestReturnType.GameDataNameDownload, gameId: 1));
-        //Debug.Log(PostGetUserBalance(RequestReturnType.GameDataWinrateDownload, gameId: 1));
-
-        //Debug.Log(PostGetUserBalance(RequestReturnType.GameDataColorRedownload, gameId: 1));
-        //Debug.Log(PostGetUserBalance(RequestReturnType.GameDataColorBlueDownload, gameId: 1));
-        //Debug.Log(PostGetUserBalance(RequestReturnType.GameDataColorGreenDownload, gameId: 1));
-
-        //Debug.Log(PostGetUserBalance(RequestReturnType.UserBalanceDownload, userId: 1));
+        HasConnection = TestConnection();
     }
 
-    public static string PostGetUserBalance(RequestReturnType returnType, int userId = 1, int gameId = 1, string newValue = "0")
+    public static int GetUserId()
+    {
+        //TODO: vracet ID uzivatele
+
+        return 1;
+    }
+
+    public static int GetGameId()
+    {
+        //TODO: vracet ID hry
+
+        return 1;
+    }
+
+    private bool TestConnection()
+    {
+        using WebClient client = new();
+        try
+        {
+            client.DownloadString(databaseUrl + dataloaderUrl);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public static string GetDataPostRequest(RequestReturnType returnType, int userId = 1, int gameId = 1, string newValue = "0")
     {
         using WebClient client = new();
         NameValueCollection postData = new()
@@ -49,8 +66,14 @@ public class WebWrapper : MonoBehaviour
                 { "gameId", gameId.ToString() },
                 { "newValue", newValue }
             };
-
-        return Encoding.UTF8.GetString(client.UploadValues(databaseUrl + dataloaderUrl, postData)); //stahuje se to jako byte[], je nutna koverze
+        try
+        {
+            return Encoding.UTF8.GetString(client.UploadValues(databaseUrl + dataloaderUrl, postData)); //stahuje se to jako byte[], je nutna koverze
+        }
+        catch
+        {
+            return "NO_CONNECTION";
+        }
     }
 
     /*

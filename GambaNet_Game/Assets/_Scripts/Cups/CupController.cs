@@ -17,6 +17,8 @@ namespace GambaNet.Cups
         public UnityEvent OnWinEvent = new();
         public MultiButtonSelector betButtonList;
 
+        [SerializeField] private int winratePercentage = 100;
+
         public void SetBetAmount(float amount) => betAmount = amount;
 
         private void OnEnable()
@@ -31,8 +33,9 @@ namespace GambaNet.Cups
 
         public void GameReady()
         {
-            winningCup = GenerateRandomCupNumber();
-            crunches[winningCup].SetActive(true);
+            //winningCup = GenerateRandomCupNumber();
+            //crunches[winningCup].SetActive(true);
+            //negeneruje se to tady, až po kliknutí na kelímek kvùli winratu
             cups.ForEach(cup => cup.interactable = true);
         }
 
@@ -53,7 +56,6 @@ namespace GambaNet.Cups
         public void StartGame()
         {
             cups.ForEach(cup => cup.interactable = false);
-            winningCup = GenerateRandomCupNumber();
             cupHolderAnimator.SetTrigger("mix");
             CreditManager.Instance.UpdateBalance(-betAmount);
             betButtonList.buttonsExceptSelected.ForEach(btn => btn.interactable = false);
@@ -61,6 +63,9 @@ namespace GambaNet.Cups
 
         public void ChooseCup(int cupNumber)
         {
+            GenerateWinningCupNumber(cupNumber);
+            crunches[winningCup].SetActive(true);
+
             if (cupNumber == winningCup)
             {
                 OnWin();
@@ -75,7 +80,7 @@ namespace GambaNet.Cups
 
         private void OnWin()
         {
-            CreditManager.Instance.UpdateBalance(betAmount * 3);
+            CreditManager.Instance.UpdateBalance(betAmount * 2);
             OnWinEvent?.Invoke();
         }
 
@@ -84,9 +89,28 @@ namespace GambaNet.Cups
             
         }
 
-        private int GenerateRandomCupNumber()
+        public void SetWinningChange(int percentage)
         {
-            return Random.Range(0, 3);
+            winratePercentage = percentage;
+        }
+
+        private int GenerateWinningCupNumber(int selectedCup)
+        {
+            int random = Random.Range(0, 100);
+
+            if (random < winratePercentage)
+            {
+                return winningCup = selectedCup;
+            }
+            else
+            {
+                while (winningCup == selectedCup)
+                {
+                    winningCup = Random.Range(0, cups.Count);
+                }
+
+                return winningCup;
+            }
         }
     }
 }
