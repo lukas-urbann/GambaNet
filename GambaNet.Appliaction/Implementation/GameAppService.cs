@@ -7,6 +7,7 @@ namespace GambaNet_Web.Application.Implementation
     public class GameAppService : IGameAppService
     {
         GambaNetDbContext _gambaNetDbContext;
+        IThumbnailUploadService _thumbnailUploadService;
 
         public GameAppService(GambaNetDbContext DbContext)
         {
@@ -20,6 +21,12 @@ namespace GambaNet_Web.Application.Implementation
         
         public void Create(Game game)
         {
+            if (game.Image != null)
+            {
+                string imagePath = _thumbnailUploadService.FileUpload(game.Image, Path.Combine("thumbnaul", "games"));
+                game.ImagePath = imagePath;
+                game.Image = null;
+            }
             _gambaNetDbContext.Games.Add(game);
             _gambaNetDbContext.SaveChanges();
         }

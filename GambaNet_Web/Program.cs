@@ -61,6 +61,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddScoped<IGameAppService, GameAppService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IAccountService, AccountIdentityService>();
+builder.Services.AddScoped<IThumbnailUploadService, ThumbnailUploadService>(serviceProvider => new ThumbnailUploadService(serviceProvider.GetService<IWebHostEnvironment>().WebRootPath + "/uploads/"));
 
 var app = builder.Build();
 
