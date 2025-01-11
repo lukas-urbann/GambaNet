@@ -4,6 +4,7 @@ using GambaNet_Web.Infrastructure.Database.Seeding;
 using GambaNet.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using GambaNet.Domain.Entities;
 
 namespace GambaNet_Web.Infrastructure.Database
 {
@@ -11,6 +12,7 @@ namespace GambaNet_Web.Infrastructure.Database
     {
         public DbSet<TransactionType> TransactionType { get; set; }
         public DbSet<Game> Games { get; set; }
+        public DbSet<Ad> Ads { get; set; }
 
         public GambaNetDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
@@ -40,6 +42,8 @@ namespace GambaNet_Web.Infrastructure.Database
             List<IdentityUserRole<int>> managerUserRoles = userRolesInit.GetRolesForDefault();
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(adminUserRoles);
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(managerUserRoles);
+
+            modelBuilder.Entity<Ad>().ToTable("Ads");
         }
     }
 }

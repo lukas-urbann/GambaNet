@@ -63,6 +63,7 @@ builder.Services.AddScoped<IGameAppService, GameAppService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IAccountService, AccountIdentityService>();
 builder.Services.AddScoped<IThumbnailUploadService, ThumbnailUploadService>(serviceProvider => new ThumbnailUploadService(serviceProvider.GetService<IWebHostEnvironment>().WebRootPath + "/uploads/"));
+builder.Services.AddScoped<IAdService, AdService>();
 
 //Loggovani
 builder.Logging.ClearProviders();
