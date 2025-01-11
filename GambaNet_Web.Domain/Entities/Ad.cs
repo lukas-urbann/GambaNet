@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using GambaNet_Web.Domain.Entities;
 
-namespace GambaNet.Domain.Entities
+namespace GambaNet_Web.Domain.Entities
 {
     [Table("Ads")]
     public class Ad : Entity<int>
@@ -18,7 +18,7 @@ namespace GambaNet.Domain.Entities
         [Required]
         public string ImagePath { get; set; }
 
-        //Just for the future
-        //public string? Url { get; set; }
+
+        public string? Url { get; set; }
     }
 }

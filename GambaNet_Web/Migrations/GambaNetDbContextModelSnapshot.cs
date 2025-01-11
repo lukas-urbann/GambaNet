@@ -22,27 +22,6 @@ namespace GambaNet_Web.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("GambaNet.Domain.Entities.Ad", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Ads", (string)null);
-                });
-
             modelBuilder.Entity("GambaNet.Infrastructure.Identity.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -183,7 +162,7 @@ namespace GambaNet_Web.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAEM9O98Suoh2o2JOK1ZOJScgOfQ21odn/k6EYUpGWnrbevCaBFFXrNL7JZxHNczhh/w==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "SEJEPXC646ZBNCDYSM3H5FRK5RWP2TN6",
-                            StartDate = new DateTime(2025, 1, 11, 12, 31, 40, 992, DateTimeKind.Local).AddTicks(7543),
+                            StartDate = new DateTime(2025, 1, 11, 13, 23, 14, 437, DateTimeKind.Local).AddTicks(3172),
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -203,10 +182,34 @@ namespace GambaNet_Web.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAEOzeajp5etRMZn7TWj9lhDMJ2GSNTtljLWVIWivadWXNMz8hj6mZ9iDR+alfEUHEMQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "MAJXOSATJKOEM4YFF32Y5G2XPR5OFEL6",
-                            StartDate = new DateTime(2025, 1, 11, 12, 31, 40, 992, DateTimeKind.Local).AddTicks(7603),
+                            StartDate = new DateTime(2025, 1, 11, 13, 23, 14, 437, DateTimeKind.Local).AddTicks(3232),
                             TwoFactorEnabled = false,
                             UserName = "manager"
                         });
+                });
+
+            modelBuilder.Entity("GambaNet_Web.Domain.Entities.Ad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ads", (string)null);
                 });
 
             modelBuilder.Entity("GambaNet_Web.Domain.Entities.Game", b =>

@@ -1,4 +1,4 @@
-﻿using GambaNet.Domain.Entities;
+﻿using GambaNet_Web.Domain.Entities;
 using GambaNet_Web.Application.Abstraction;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

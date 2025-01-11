@@ -1,0 +1,35 @@
+﻿@model GambaNet_Web.Domain.Entities.Ad
+
+<div class="ad-banner">
+    <a href="@Model.Url" target="_blank">
+        <img src="@Model.ImagePath" alt="@Model.Title" />
+    </a>
+</div>
+
+@*
+    Příklad použití komponenty RandomAd v _Layout.cshtml:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GambaNet</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Navigation bar content -->
+        </nav>
+        @await Component.InvokeAsync("RandomAd") <!-- Include the RandomAd view component here -->
+    </header>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer>
+        <p>&copy; 2023 - GambaNet</p>
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+*@

@@ -4,7 +4,6 @@ using GambaNet_Web.Infrastructure.Database.Seeding;
 using GambaNet.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using GambaNet.Domain.Entities;
 
 namespace GambaNet_Web.Infrastructure.Database
 {

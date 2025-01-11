@@ -21,6 +21,8 @@ namespace GambaNet_Web.Migrations
                     Title = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ImagePath = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Url = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -34,14 +36,14 @@ namespace GambaNet_Web.Migrations
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "StartDate",
-                value: new DateTime(2025, 1, 11, 12, 31, 40, 992, DateTimeKind.Local).AddTicks(7543));
+                value: new DateTime(2025, 1, 11, 13, 23, 14, 437, DateTimeKind.Local).AddTicks(3172));
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "StartDate",
-                value: new DateTime(2025, 1, 11, 12, 31, 40, 992, DateTimeKind.Local).AddTicks(7603));
+                value: new DateTime(2025, 1, 11, 13, 23, 14, 437, DateTimeKind.Local).AddTicks(3232));
         }
 
         /// <inheritdoc />

@@ -1,4 +1,4 @@
-﻿using GambaNet.Domain.Entities;
+﻿using GambaNet_Web.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
