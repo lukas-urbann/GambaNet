@@ -11,7 +11,7 @@
     <br /><br />
     <div class="container text-start">
         <div class="row align-items-end">
-            <div class="col">
+            <div class="col-9">
                 Nabídka dostupných akcí
                 <ul>
                     <li class="nav-item">
@@ -22,7 +22,7 @@
                                 foreach (var game in Model.Games)
                                 {
                                     <li>
-                                        <a class="nav-link" asp-area="" asp-controller="Games" asp-action="@game.Name">@game.Name</a>
+                                        <a class="nav-link" asp-area="" asp-controller="Games" asp-action="@game.GameType" asp-route-id="@game.Id">@game.Name</a>
                                     </li>
                                 }
                             }
@@ -40,7 +40,7 @@
                 </ul>
             </div>
 
-            <div class="col">
+            <div class="col-3 img-fluid">
                 @await Component.InvokeAsync("RandomAd")
             </div>
         </div>

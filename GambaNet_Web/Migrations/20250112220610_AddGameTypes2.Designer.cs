@@ -4,6 +4,7 @@ using GambaNet_Web.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GambaNet_Web.Migrations
 {
     [DbContext(typeof(GambaNetDbContext))]
-    partial class GambaNetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250112220610_AddGameTypes2")]
+    partial class AddGameTypes2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,7 +165,7 @@ namespace GambaNet_Web.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAEM9O98Suoh2o2JOK1ZOJScgOfQ21odn/k6EYUpGWnrbevCaBFFXrNL7JZxHNczhh/w==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "SEJEPXC646ZBNCDYSM3H5FRK5RWP2TN6",
-                            StartDate = new DateTime(2025, 1, 13, 0, 15, 3, 165, DateTimeKind.Local).AddTicks(647),
+                            StartDate = new DateTime(2025, 1, 12, 23, 6, 10, 201, DateTimeKind.Local).AddTicks(7155),
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -182,7 +185,7 @@ namespace GambaNet_Web.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAEOzeajp5etRMZn7TWj9lhDMJ2GSNTtljLWVIWivadWXNMz8hj6mZ9iDR+alfEUHEMQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "MAJXOSATJKOEM4YFF32Y5G2XPR5OFEL6",
-                            StartDate = new DateTime(2025, 1, 13, 0, 15, 3, 165, DateTimeKind.Local).AddTicks(711),
+                            StartDate = new DateTime(2025, 1, 12, 23, 6, 10, 201, DateTimeKind.Local).AddTicks(7238),
                             TwoFactorEnabled = false,
                             UserName = "manager"
                         });
@@ -285,116 +288,6 @@ namespace GambaNet_Web.Migrations
                             GameType = "Plinko",
                             Name = "Igor Hnízdo",
                             Winrate = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BackgroundBlue = 58,
-                            BackgroundGreen = 85,
-                            BackgroundRed = 34,
-                            Description = "Vyhraješ, nebo tě potopí?",
-                            GameType = "Slot",
-                            Name = "Hvězda Severu",
-                            Winrate = 25
-                        },
-                        new
-                        {
-                            Id = 5,
-                            BackgroundBlue = 255,
-                            BackgroundGreen = 240,
-                            BackgroundRed = 210,
-                            Description = "Cítíš ten chlad?",
-                            GameType = "Cups",
-                            Name = "Zimní Vánek",
-                            Winrate = 75
-                        },
-                        new
-                        {
-                            Id = 6,
-                            BackgroundBlue = 40,
-                            BackgroundGreen = 20,
-                            BackgroundRed = 160,
-                            Description = "Štěstí bolí.",
-                            GameType = "Plinko",
-                            Name = "Střepy Štěstí",
-                            Winrate = 10
-                        },
-                        new
-                        {
-                            Id = 7,
-                            BackgroundBlue = 50,
-                            BackgroundGreen = 50,
-                            BackgroundRed = 50,
-                            Description = "Jsi připraven na bitvu?",
-                            GameType = "Slot",
-                            Name = "Rytířská Síla",
-                            Winrate = 40
-                        },
-                        new
-                        {
-                            Id = 8,
-                            BackgroundBlue = 0,
-                            BackgroundGreen = 215,
-                            BackgroundRed = 255,
-                            Description = "Co ti přinese osud?",
-                            GameType = "Cups",
-                            Name = "Pohár Života",
-                            Winrate = 60
-                        },
-                        new
-                        {
-                            Id = 9,
-                            BackgroundBlue = 255,
-                            BackgroundGreen = 100,
-                            BackgroundRed = 100,
-                            Description = "Co se mohlo stát jinak?",
-                            GameType = "Slot",
-                            Name = "Rozbité Sny",
-                            Winrate = 20
-                        },
-                        new
-                        {
-                            Id = 10,
-                            BackgroundBlue = 140,
-                            BackgroundGreen = 180,
-                            BackgroundRed = 210,
-                            Description = "Zvládneš přežít?",
-                            GameType = "Cups",
-                            Name = "Pouštní Bouře",
-                            Winrate = 30
-                        },
-                        new
-                        {
-                            Id = 11,
-                            BackgroundBlue = 19,
-                            BackgroundGreen = 69,
-                            BackgroundRed = 139,
-                            Description = "Zahřeje nebo spálí?",
-                            GameType = "Plinko",
-                            Name = "Horká Čokoláda",
-                            Winrate = 45
-                        },
-                        new
-                        {
-                            Id = 12,
-                            BackgroundBlue = 230,
-                            BackgroundGreen = 216,
-                            BackgroundRed = 173,
-                            Description = "Zmrazíš soupeře?",
-                            GameType = "Plinko",
-                            Name = "Ledový Král",
-                            Winrate = 55
-                        },
-                        new
-                        {
-                            Id = 13,
-                            BackgroundBlue = 128,
-                            BackgroundGreen = 0,
-                            BackgroundRed = 128,
-                            Description = "Najdeš poklad?",
-                            GameType = "Slot",
-                            Name = "Ztracené Město",
-                            Winrate = 35
                         });
                 });
 

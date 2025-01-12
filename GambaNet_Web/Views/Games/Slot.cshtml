@@ -1,0 +1,29 @@
+@model Tuple<int, string?>
+
+@{
+    ViewData["Title"] = "Plinko";
+}
+
+<iframe style="display: block; margin: auto;" id="unityIframe" src="https://urban-lukas.cz/slots/" width="1024" height="772"></iframe>
+
+<script>
+    function delay(ms)
+    {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function dataUpload()
+    {
+        console.log("Waiting 2 seconds...");
+        await delay(2000);
+        sendDataToUnity();
+    }
+
+    function sendDataToUnity()
+    {
+        const iframe = document.getElementById("unityIframe");
+        iframe.contentWindow.postMessage({ gameId: '@Model.Item1', userId: '@Model.Item2' }, 'https://urban-lukas.cz/');
+    }
+
+    dataUpload();
+</script>

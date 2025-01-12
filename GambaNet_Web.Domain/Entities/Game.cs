@@ -14,6 +14,7 @@ namespace GambaNet_Web.Domain.Entities
     {
         [Capitalize]
         public string Name { get; set; }
+        public string GameType { get; set; }
         public string Description { get; set; }
         public int Winrate { get; set; }
         public int BackgroundRed { get; set; }
