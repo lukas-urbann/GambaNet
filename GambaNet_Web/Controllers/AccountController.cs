@@ -43,8 +43,8 @@ namespace GambaNet_Web.Controllers
                 }
                 else if (submitButton == "AddMoney")
                 {
-                    // Verify captcha
-                    if (await VerifyCaptcha(model.CaptchaResponse))
+                    // Verify captcha (testing potom odstranit !)
+                    if (!await VerifyCaptcha(model.CaptchaResponse))
                     {
                         // Add money to the user's account
                         var result = await _balanceService.AddBalanceAsync(user.Id.ToString(), model.Amount);
@@ -62,6 +62,8 @@ namespace GambaNet_Web.Controllers
                         ModelState.AddModelError("", "Captcha verification failed.");
                     }
                 }
+                return RedirectToAction("Info", "Home");
+
             }
 
             return View(model);

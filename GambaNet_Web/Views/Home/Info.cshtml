@@ -1,0 +1,44 @@
+@page "/info"
+@using GambaNet.Infrastructure.Identity
+@using Microsoft.AspNetCore.Identity
+@using GambaNet_Web.Application.Implementation
+@using GambaNet_Web.Application.Abstraction
+@using GambaNet_Web.Domain.Entities
+@inject UserManager<User> UserManager
+@inject SignInManager<User> SignInManager
+@inject IBalanceService BalanceService
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var isAuthenticated = User.Identity?.IsAuthenticated ?? false;
+    decimal? balance = null;
+
+    if (isAuthenticated && user != null)
+    {
+        balance = await BalanceService.GetBalanceAsync(user.Id.ToString());
+    }
+}
+
+<div class="container">
+    <h1>User Info</h1>
+
+    @if (isAuthenticated && user != null)
+    {
+        <div>
+            <p><strong>User Name:</strong> @user.UserName</p>
+            <p><strong>Email:</strong> @user.Email</p>
+            <p><strong>Start Date:</strong> @user.StartDate?.ToString("yyyy-MM-dd")</p>
+            <p><strong>Phone Number:</strong> @user.PhoneNumber</p>
+            <p><strong>First Name:</strong> @user.FirstName</p>
+            <p><strong>Last Name:</strong> @user.LastName</p>
+            <p><strong>Balance:</strong> @balance</p>
+            <form method="get" asp-controller="Account" asp-action="AddMoney">
+                <button type="submit" class="btn btn-primary">Add Balance</button>
+            </form>
+        </div>
+    }
+    else
+    {
+        <p>Please log in to view your balance and add funds.</p>
+    }
+</div>

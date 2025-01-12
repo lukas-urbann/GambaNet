@@ -350,6 +350,19 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Pomelo.EntityFrameworkCore.MySql/8.0.2": {
         "type": "package",
         "dependencies": {
@@ -948,6 +961,36 @@
         "mysqlconnector.nuspec"
       ]
     },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Pomelo.EntityFrameworkCore.MySql/8.0.2": {
       "sha512": "XjnlcxVBLnEMbyEc5cZzgZeDyLvAniACZQ04W1slWN0f4rmfNzl98gEMvHnFH0fMDF06z9MmgGi/Sr7hJ+BVnw==",
       "type": "package",
@@ -1004,27 +1047,28 @@
     "net8.0": [
       "GambaNet_Web.Domain >= 1.0.0",
       "GambaNet_Web.Infrastructure >= 1.0.0",
-      "Microsoft.AspNetCore.Http.Features >= 5.0.17"
+      "Microsoft.AspNetCore.Http.Features >= 5.0.17",
+      "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lukas\\.nuget\\packages\\": {},
+    "C:\\Users\\kramn\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet_Web.Application.csproj",
+      "projectUniqueName": "C:\\Users\\kramn\\Desktop\\Skola\\5.semestr\\Webovky\\GambaNet\\GambaNet.Appliaction\\GambaNet_Web.Application.csproj",
       "projectName": "GambaNet_Web.Application",
-      "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\GambaNet_Web.Application.csproj",
-      "packagesPath": "C:\\Users\\lukas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet.Appliaction\\obj\\",
+      "projectPath": "C:\\Users\\kramn\\Desktop\\Skola\\5.semestr\\Webovky\\GambaNet\\GambaNet.Appliaction\\GambaNet_Web.Application.csproj",
+      "packagesPath": "C:\\Users\\kramn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kramn\\Desktop\\Skola\\5.semestr\\Webovky\\GambaNet\\GambaNet.Appliaction\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kramn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1039,11 +1083,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet_Web.Domain\\GambaNet_Web.Domain.csproj": {
-              "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet_Web.Domain\\GambaNet_Web.Domain.csproj"
+            "C:\\Users\\kramn\\Desktop\\Skola\\5.semestr\\Webovky\\GambaNet\\GambaNet_Web.Domain\\GambaNet_Web.Domain.csproj": {
+              "projectPath": "C:\\Users\\kramn\\Desktop\\Skola\\5.semestr\\Webovky\\GambaNet\\GambaNet_Web.Domain\\GambaNet_Web.Domain.csproj"
             },
-            "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet_Web.Infrastructure\\GambaNet_Web.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\lukas\\Documents\\UTB\\Pokrocile_webove_technologie\\GambaNet\\GambaNet_Web.Infrastructure\\GambaNet_Web.Infrastructure.csproj"
+            "C:\\Users\\kramn\\Desktop\\Skola\\5.semestr\\Webovky\\GambaNet\\GambaNet_Web.Infrastructure\\GambaNet_Web.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\kramn\\Desktop\\Skola\\5.semestr\\Webovky\\GambaNet\\GambaNet_Web.Infrastructure\\GambaNet_Web.Infrastructure.csproj"
             }
           }
         }
@@ -1067,6 +1111,10 @@
           "Microsoft.AspNetCore.Http.Features": {
             "target": "Package",
             "version": "[5.0.17, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
           }
         },
         "imports": [
