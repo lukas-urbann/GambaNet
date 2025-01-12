@@ -1,0 +1,50 @@
+﻿@model IList<GambaNet_Web.Domain.Entities.Ad>
+
+@{
+    ViewData["Title"] = "Administrace reklam";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a asp-action="Create">Vytvořit reklamu</a>
+
+@{
+    if (Model != null && Model.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">@nameof(GambaNet_Web.Domain.Entities.Ad.Id)</th>
+                    <th scope="col">Název</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Upravit</th>
+                    <th scope="col">Smazat</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ad in Model)
+                {
+                    <tr>
+                        <th scope="row">@ad.Id</th>
+                        <td>@ad.Title</td>
+                        <td>@ad.Url</td>
+                        <td><a asp-action="Edit" asp-route-id="@ad.Id">Upravit</a></td>
+                        <td><a asp-action="Delete" asp-route-id="@ad.Id" onclick="return ConfirmDelete();">Smazat</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Zádné reklamy</p>
+    }
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        function ConfirmDelete() {
+            return confirm('Opravdu chcete tuhle reklamu smazat?');
+        }
+    </script>
+}

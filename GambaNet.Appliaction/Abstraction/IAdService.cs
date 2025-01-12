@@ -12,5 +12,10 @@ namespace GambaNet_Web.Application.Abstraction
     {
         Task UploadAdAsync(Ad ad, IFormFile image);
         Task<Ad> GetRandomAdAsync();
+        Task<IEnumerable<Ad>> GetAllAdsAsync(); // Add this method
+        Task<Ad> GetAdByIdAsync(int id); // Add this method
+        Task AddAdAsync(Ad ad); // Add this method
+        Task UpdateAdAsync(Ad ad); // Add this method
+        Task DeleteAdAsync(int id); // Add this method
     }
 }

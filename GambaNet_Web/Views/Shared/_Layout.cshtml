@@ -1,5 +1,4 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="utf-8" />
@@ -9,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GambaNet_Web.styles.css" asp-append-version="true" />
     <!-- @await RenderSectionAsync("Styles", required: false) -->
-    </head>
+</head>
 <body class="bg-light">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
@@ -22,28 +21,29 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Games" asp-action="">Hry</a>
+                            <a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Hry</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Soukromí</a>
                         </li>
-                        @if (User.Identity.IsAuthenticated == true && (User.IsInRole(nameof(Roles.Admin)) || User.IsInRole(nameof(Roles.Default))))
+                        @if (User.Identity.IsAuthenticated && (User.IsInRole(nameof(Roles.Admin)) || User.IsInRole(nameof(Roles.Default))))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Info">Uživatelské centrum</a>
                             </li>
                         }
-                        @if (User.Identity.IsAuthenticated == true && (User.IsInRole(nameof(Roles.Admin))))
+                        @if (User.Identity.IsAuthenticated && User.IsInRole(nameof(Roles.Admin)))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="Admin" asp-controller="Games" asp-action="Select">Úprava Her</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Admin" asp-controller="Ad" asp-action="Index">Úprava Reklam</a>
+                            </li>
                         }
                     </ul>
-                    
-                    
-                @{
-                        @if (User.Identity is { IsAuthenticated: false })
+                    @{
+                        if (User.Identity is { IsAuthenticated: false })
                         {
                             <span style="padding-right:16px;">
                                 <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Login">Přihlásit</a>
@@ -59,7 +59,6 @@
                             </span>
                         }
                     }
-                    
                 </div>
             </div>
         </nav>

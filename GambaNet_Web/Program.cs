@@ -9,6 +9,7 @@ using GambaNet_Web.Application.Implementation;
 using GambaNet.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using GambaNet.Infrastructure.Database.Seeding;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -71,8 +72,13 @@ builder.Services.AddHttpClient<IReCaptchaService, ReCaptchaService>(); // Regist
 //Loggovani
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+builder.Logging.AddFile("Logs/myapp-{Date}.txt");
 
 var app = builder.Build();
+
+// Seed the database
+await AdInit.SeedAsync(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -80,6 +86,10 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+}
+else
+{
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
@@ -90,6 +100,21 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.Use(async (context, next) =>
+{
+    try
+    {
+        await next.Invoke();
+    }
+    catch (Exception ex)
+    {
+        // Log the exception
+        var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An unhandled exception occurred.");
+        throw;
+    }
+});
 
 app.MapControllerRoute(
     name: "areas",

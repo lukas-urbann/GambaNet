@@ -1,0 +1,31 @@
+﻿@model GambaNet_Web.Domain.Entities.Ad
+
+@{
+    ViewData["Title"] = "Upravit reklamu";
+}
+
+<h2>Upravit reklamu</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Název</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="image" class="control-label">Obrázek</label>
+        <input type="file" name="image" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Url" class="control-label">Odkaz</label>
+        <input asp-for="Url" class="form-control" />
+        <span asp-validation-for="Url" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Uložit" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

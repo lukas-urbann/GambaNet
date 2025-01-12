@@ -17,17 +17,13 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Hry</a>
                         <ul>
-                            @{
-                                if (Model.Games != null && Model.Games.Count > 0)
-                                { 
-                                    IList<Game> g = Model.Games;
-
-                                    foreach (var game in g)
-                                    {
-                                        <li>
-                                            <a class="nav-link" asp-area="" asp-controller="Games" asp-action="@game.Name">@game.Name</a>
-                                        </li>
-                                    }
+                            @if (Model.Games != null && Model.Games.Count > 0)
+                            {
+                                foreach (var game in Model.Games)
+                                {
+                                    <li>
+                                        <a class="nav-link" asp-area="" asp-controller="Games" asp-action="@game.Name">@game.Name</a>
+                                    </li>
                                 }
                             }
                         </ul>
@@ -35,24 +31,13 @@
                     <li>
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Soukromí</a>
                     </li>
-                    @{
-                        @if (User.Identity is { IsAuthenticated: false })
-                        {
-                            <li>
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Info">Uživatelské centrum</a>
-                            </li>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li>
-                                    <a class="nav-link" asp-area="" asp-controller="Games" asp-action="Edit">Edit Games</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" asp-area="" asp-controller="Ads" asp-action="Edit">Edit Ads</a>
-                                </li>
-                            }
-                        }
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Info">Uživatelské centrum</a>
+                        </li>
                     }
-                    </ul>
+                </ul>
             </div>
 
             <div class="col">
@@ -62,13 +47,11 @@
     </div>
 </div>
 
-
-
 @{
-/*
-@section Styles
-{
-    <link rel="stylesheet" href="~/css/shop_home.css" asp-append-version="true" />
-}
-*/
+    /*
+    @section Styles
+        {
+        <link rel="stylesheet" href="~/css/shop_home.css" asp-append-version="true" />
+    }
+    */
 }

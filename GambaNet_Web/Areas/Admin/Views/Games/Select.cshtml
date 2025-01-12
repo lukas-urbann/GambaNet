@@ -1,12 +1,12 @@
 ﻿@model IList<Game>
 
 @{
-        ViewData["Title"] = "Games Administration";
+        ViewData["Title"] = "Administrace her";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<a asp-action="Create">Create Game</a>
+<a asp-action="Create">Vytvořit hru</a>
 
 @{
         if (Model != null && Model.Count > 0)
@@ -15,9 +15,9 @@
                         <thead>
                         <tr>
                                 <th scope="col">@nameof(Game.Id)</th>
-                                <th scope="col">@nameof(Game.Name)</th>
-                                <th scope="col">@nameof(Game.Description)</th>
-                                <th scope="col">Delete</th>
+                                <th scope="col">Jméno</th>
+                                <th scope="col">Popis</th>
+                                <th scope="col">Smazat</th>
                                 </tr>
                         </thead>
                         <tbody>
@@ -27,7 +27,7 @@
                                 <th scope="row">@g.Id</th>
                                 <td>@g.Name</td>
                                 <td>@g.Description</td>
-                                <td><a asp-action="Delete" asp-route-id="@g.Id" onclick="return ConfirmDelete();">Delete</a></td>
+                                <td><a asp-action="Delete" asp-route-id="@g.Id" onclick="return ConfirmDelete();">Smazat</a></td>
                         </tr>
                         }
                 </tbody>
@@ -35,6 +35,6 @@
         }
         else
         {
-                <p>Game table is empty!</p>
+                <p>Žádné hry neexistují</p>
         }
 }
