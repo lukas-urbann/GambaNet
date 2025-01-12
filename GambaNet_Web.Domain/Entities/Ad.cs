@@ -12,14 +12,14 @@ namespace GambaNet_Web.Domain.Entities
     [Table("Ads")]
     public class Ad : Entity<int>
     {
-        [Required(ErrorMessage = "Title is required")]
-        [StringLength(100, ErrorMessage = "Title cannot be longer than 100 characters")]
+        [Required(ErrorMessage = "Název je vyžadován")]
+        [StringLength(100, ErrorMessage = "Max 100 znaků")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "Image path is required")]
+        [Required(ErrorMessage = "Cesta je vyžadována")]
         public string ImagePath { get; set; }
 
-        [Url(ErrorMessage = "Please enter a valid URL")]
+        [Url(ErrorMessage = "Zadejte vylidní URL")]
         public string? Url { get; set; }
     }
 }

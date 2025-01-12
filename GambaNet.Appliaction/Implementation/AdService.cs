@@ -124,20 +124,17 @@ namespace GambaNet_Web.Application.Implementation
 
         public async Task DeleteAdAsync(int id)
         {
-            try
+            _logger.LogInformation($"Attempting to delete ad with ID {id}");
+            var ad = await _context.Ads.FindAsync(id);
+            if (ad != null)
             {
-                var ad = await _context.Ads.FindAsync(id);
-                if (ad != null)
-                {
-                    _context.Ads.Remove(ad);
-                    await _context.SaveChangesAsync();
-                    _logger.LogInformation("Ad deleted successfully");
-                }
+                _context.Ads.Remove(ad);
+                await _context.SaveChangesAsync();
+                _logger.LogInformation($"Ad with ID {id} deleted successfully");
             }
-            catch (Exception ex)
+            else
             {
-                _logger.LogError(ex, "An error occurred while deleting the ad");
-                throw;
+                _logger.LogWarning($"Ad with ID {id} not found");
             }
         }
     }

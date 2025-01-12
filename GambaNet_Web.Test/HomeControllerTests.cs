@@ -6,7 +6,7 @@ using Moq;
 
 namespace GambeNet_Test;
 
-public class UnitTest1
+public class HomeControllerTests
 {
     [Fact]
     public void GetIndexViewModel_ReturnsGameViewModelWithGames()
