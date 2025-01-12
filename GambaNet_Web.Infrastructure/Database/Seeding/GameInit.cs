@@ -16,20 +16,32 @@ namespace GambaNet_Web.Infrastructure.Database.Seeding
                 new Game
                 {
                     Id = 1,
-                    Name = "Slots",
-                    Description = "Slots machine description",
+                    Name = "Láska Strejdy",
+                    Description = "Máš na to ?",
+                    Winrate = 100,
+                    BackgroundRed = 230,
+                    BackgroundGreen = 179,
+                    BackgroundBlue = 39,
                 },
                 new Game
                 {
                     Id = 2,
-                    Name = "Cups",
-                    Description = "Cups description",
+                    Name = "Léto v Čečensku",
+                    Description = "Kde to jen bylo",
+                    Winrate = 50,
+                    BackgroundRed = 39,
+                    BackgroundGreen = 80,
+                    BackgroundBlue = 230,
                 },
                 new Game
                 {
                     Id = 3,
-                    Name = "Plinko",
-                    Description = "Plinko description",
+                    Name = "Igor Hnízdo",
+                    Description = "Proč to musel udělat",
+                    Winrate = 0,
+                    BackgroundRed = 189,
+                    BackgroundGreen = 138,
+                    BackgroundBlue = 169,
                 }
             };
 
