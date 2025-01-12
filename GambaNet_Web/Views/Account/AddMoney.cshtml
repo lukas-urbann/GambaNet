@@ -1,14 +1,14 @@
 ﻿@model GambaNet_Web.Models.AddMoneyViewModel
 
 @{
-    ViewData["Title"] = "Add Money";
+    ViewData["Title"] = "Dobít kredit";
 }
 
-<h2>Add Money</h2>
+<h2>Dobít kredit</h2>
 
 <form asp-action="AddMoney" method="post">
     <div class="form-group">
-        <label asp-for="Amount" class="control-label"></label>
+        <label asp-for="Amount" class="control-label">Částka</label>
         <input asp-for="Amount" class="form-control" />
         <span asp-validation-for="Amount" class="text-danger"></span>
     </div>
@@ -18,11 +18,18 @@
         <span asp-validation-for="CaptchaResponse" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <button type="submit" name="submitButton" value="PayPal" class="btn btn-primary">Donate via PayPal</button>
-        <button type="submit" name="submitButton" value="AddMoney" class="btn btn-secondary">Add Money</button>
+        <button type="button" class="btn btn-primary" onclick="redirectToPayPal()">Přispět na provoz přes PayPal</button>
+        <button type="submit" name="submitButton" value="AddMoney" class="btn btn-secondary">Dobít kredit</button>
     </div>
 </form>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        function redirectToPayPal() {
+            var paypalUrl = "https://www.paypal.com/donate/?hosted_button_id=28UX6B9MWQWLS";
+            window.location.href = paypalUrl;
+        }
+    </script>
 }
+

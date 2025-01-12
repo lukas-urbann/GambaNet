@@ -1,4 +1,4 @@
-@page "/info"
+﻿@page "/info"
 @using GambaNet.Infrastructure.Identity
 @using Microsoft.AspNetCore.Identity
 @using GambaNet_Web.Application.Implementation
@@ -25,20 +25,20 @@
     @if (isAuthenticated && user != null)
     {
         <div>
-            <p><strong>User Name:</strong> @user.UserName</p>
+            <p><strong>Uživatelské jméno:</strong> @user.UserName</p>
             <p><strong>Email:</strong> @user.Email</p>
-            <p><strong>Start Date:</strong> @user.StartDate?.ToString("yyyy-MM-dd")</p>
-            <p><strong>Phone Number:</strong> @user.PhoneNumber</p>
-            <p><strong>First Name:</strong> @user.FirstName</p>
-            <p><strong>Last Name:</strong> @user.LastName</p>
-            <p><strong>Balance:</strong> @balance</p>
+            <p><strong>Registrace:</strong> @user.StartDate?.ToString("yyyy-MM-dd")</p>
+            <p><strong>Telefoní číslo:</strong> @user.PhoneNumber</p>
+            <p><strong>Jméno:</strong> @user.FirstName</p>
+            <p><strong>Příjmení:</strong> @user.LastName</p>
+            <p><strong>Peníze:</strong> @balance</p>
             <form method="get" asp-controller="Account" asp-action="AddMoney">
-                <button type="submit" class="btn btn-primary">Add Balance</button>
+                <button type="submit" class="btn btn-primary">Dobít kredit</button>
             </form>
         </div>
     }
     else
     {
-        <p>Please log in to view your balance and add funds.</p>
+        <p>Prosím přihlašte se pro zobrazení údajů.</p>
     }
 </div>

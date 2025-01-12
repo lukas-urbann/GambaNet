@@ -41,6 +41,15 @@
                             <li>
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Info">Uživatelské centrum</a>
                             </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li>
+                                    <a class="nav-link" asp-area="" asp-controller="Games" asp-action="Edit">Edit Games</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="" asp-controller="Ads" asp-action="Edit">Edit Ads</a>
+                                </li>
+                            }
                         }
                     }
                     </ul>
