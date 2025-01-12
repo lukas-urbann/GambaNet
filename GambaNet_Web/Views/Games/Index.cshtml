@@ -1,0 +1,28 @@
+@model GambaNet_Web.Application.ViewModel.GameViewModel
+
+@{
+    ViewData["Title"] = "Gamba Hry";
+}
+
+<div class="container">
+<div class="row">
+
+@if (Model.Games != null && Model.Games.Count > 0)
+{
+    foreach (var game in Model.Games)
+    {
+        <div class="col-4 mb-4 d-flex">
+        <div class="card h-100">
+            <img class="card-img-top" src="~/img/thumbnail/thumbnail_cups.png" alt="Card image cap">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">@game.Name</h5>
+                <p class="card-text">@game.Description</p>
+                <a asp-area="" asp-controller="Games" asp-action="@game.GameType" asp-route-id="@game.Id" class="btn btn-primary">Hrát</a>
+            </div>
+        </div>
+        </div>
+    }
+}
+
+</div>
+</div>
