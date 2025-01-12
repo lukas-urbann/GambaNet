@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GambaNet.Wrapper
 {
@@ -24,29 +26,38 @@ namespace GambaNet.Wrapper
 
         private void Start()
         {
-            _localUserBalance = UserBalance;
+            LoadUserBalance();
         }
 
+        private IEnumerator GetBalance()
+        {
+            val = 0;
+            yield return new WaitUntil(() => WebWrapper.Instance.HasConnected.Item1 && WebWrapper.Instance.HasConnected.Item2);
+
+            UnityEvent<string> balanceRespone = new UnityEvent<string>();
+
+            balanceRespone.AddListener((balance) =>
+            {
+                val = double.Parse(balance, CultureInfo.InvariantCulture);
+                _localUserBalance = val;
+                WebWrapper.Instance.UserLoaded = true;
+            });
+
+            WebWrapper.Instance.GetDataPostRequest(WebWrapper.RequestReturnType.UserBalanceDownload, userId: WebWrapper.Instance.GetUserId(), callback: balanceRespone);
+        }
+
+        double val = default;
         private double LoadUserBalance()
         {
-            if (!WebWrapper.HasConnection)
-            {
-                return 0;
-            }
-
-            string balance = WebWrapper.GetDataPostRequest(WebWrapper.RequestReturnType.UserBalanceDownload, userId: WebWrapper.LoadUserId());
-            return double.Parse(balance, CultureInfo.InvariantCulture);
+            StartCoroutine(GetBalance());
+            return this.val;
         }
 
         private void UploadUserBalance()
         {
-            if (!WebWrapper.HasConnection)
-            {
-                return;
-            }
-
+            //if (!WebWrapper.Instance.HasConnection) return;
             string balance = _localUserBalance.ToString("F30", CultureInfo.InvariantCulture).Replace(",", ".");
-            WebWrapper.GetDataPostRequest(WebWrapper.RequestReturnType.UserBalanceUpload, userId: WebWrapper.LoadUserId(), newValue: balance);
+            WebWrapper.Instance.GetDataPostRequest(WebWrapper.RequestReturnType.UserBalanceUpload, userId: WebWrapper.Instance.GetUserId(), newValue: balance);
         }
 
         public void UpdateBalance(float amount)

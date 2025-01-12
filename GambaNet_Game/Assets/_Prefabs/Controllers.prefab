@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 5755602026905154889}
   - component: {fileID: 3851473030712413402}
   - component: {fileID: 1026777853912755447}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5755602026905154889
 RectTransform:
   m_ObjectHideFlags: 0
@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Na\u010D\xEDt\xE1n\xED hern\xEDch dat..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 844eb6e69534665469fc88bd6df62957, type: 2}
-  m_sharedMaterial: {fileID: 6042549217059487937, guid: 844eb6e69534665469fc88bd6df62957, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 09a64c8842cf90d44a952513f5b4b132, type: 2}
+  m_sharedMaterial: {fileID: 5082913363132578071, guid: 09a64c8842cf90d44a952513f5b4b132, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 95.38
-  m_fontSizeBase: 95.38
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 2051259046316916648}
   - component: {fileID: 2733140085644122051}
   - component: {fileID: 1726319936066911020}
+  - component: {fileID: 6089568055249332691}
   m_Layer: 0
   m_Name: WrapperController
   m_TagString: Untagged
@@ -374,7 +375,34 @@ MonoBehaviour:
   backgroundRGB: {x: 0, y: 0, z: 0}
   setWinRate:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GambaNet.Cups.CupController, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6089568055249332691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280756310045177420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f03f8691f35a8468a435247a98a2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SettingsLoaded: 0
+  UserLoaded: 0
+  loadPanelAnimator: {fileID: 7207841058766556448}
 --- !u!1 &8457979502338733726
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +415,8 @@ GameObject:
   - component: {fileID: 917865338242508070}
   - component: {fileID: 1728001231401841035}
   - component: {fileID: 7207841058766556448}
-  m_Layer: 5
+  - component: {fileID: 4855471482342893593}
+  m_Layer: 9
   m_Name: LoadingOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,8 +464,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -474,6 +503,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &4855471482342893593
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8457979502338733726}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8551361872118190290
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +722,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &8188195124175171430
 MonoBehaviour:

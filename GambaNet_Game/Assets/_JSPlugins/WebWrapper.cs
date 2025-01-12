@@ -1,14 +1,40 @@
-using System.Collections.Specialized;
-using System.Net;
+using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Networking;
 
 public class WebWrapper : MonoBehaviour
 {
-    private static string databaseUrl = "http://localhost/phpdatabaze/";
-    private static string dataloaderUrl = "dataloader.php";
-    public static bool HasConnection;
+    private static readonly string databaseUrl = "https://urban-lukas.cz/";
+    private static readonly string dataloaderUrl = "gambadata.php";
+
+    public bool SettingsLoaded = false;
+    public bool UserLoaded = false;
+
+    public Animator loadPanelAnimator;
+
+    public static WebWrapper Instance;
+
+    private void Start()
+    {
+        StartCoroutine(WaitForLoad());
+    }
+
+    private IEnumerator WaitForLoad()
+    {
+        OnGameStart();
+        yield return new WaitUntil(() => SettingsLoaded && UserLoaded);
+
+        if (GetUserId() == -1 || GetGameId() == -1) yield return new WaitUntil(() => GetUserId() != -1 && GetGameId() != -1);
+
+        Debug.Log("Game data loaded");
+        
+        loadPanelAnimator.SetTrigger("Loaded");
+    }
 
     public enum RequestReturnType
     {
@@ -23,79 +49,113 @@ public class WebWrapper : MonoBehaviour
         GameDataColorGreenDownload,
     }
 
+    [DllImport("__Internal")]
+    public static extern int OnGameStart();
+
+    public (bool, bool) HasConnected = (false, false);
+
     private void Awake()
     {
-        HasConnection = TestConnection();
-    }
-
-    public static int GetUserId()
-    {
-        //TODO: vracet ID uzivatele
-
-        return 1;
-    }
-
-    public static int GetGameId()
-    {
-        //TODO: vracet ID hry
-
-        return 1;
-    }
-
-    private bool TestConnection()
-    {
-        using WebClient client = new();
-        try
+        if (Instance == null)
         {
-            client.DownloadString(databaseUrl + dataloaderUrl);
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
-    }
-
-    public static string GetDataPostRequest(RequestReturnType returnType, int userId = 1, int gameId = 1, string newValue = "0")
-    {
-        using WebClient client = new();
-        NameValueCollection postData = new()
-            {
-                { "requestType", returnType.ToString() },
-                { "userId", userId.ToString() },
-                { "gameId", gameId.ToString() },
-                { "newValue", newValue }
-            };
-        try
-        {
-            return Encoding.UTF8.GetString(client.UploadValues(databaseUrl + dataloaderUrl, postData)); //stahuje se to jako byte[], je nutna koverze
-        }
-        catch
-        {
-            return "NO_CONNECTION";
-        }
-    }
-
-    /*
-    private IEnumerator GetGameData()
-    {
-        UnityWebRequest request = UnityWebRequest.Get(databaseUrl + gameDataUrl);
-
-        yield return request.SendWebRequest();
-
-        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.Log(request.error);
+            Instance = this;
         }
         else
         {
-            string s = request.downloadHandler.text;
-            s = s.Replace("\n", "");
-            Debug.Log(s);
+            Destroy(this);
         }
     }
-    */
 
-    [DllImport("__Internal")]
-    public static extern int LoadUserId();
+    public void SetGameID(string id)
+    {
+        HasConnected.Item1 = true;
+        gID = string.IsNullOrEmpty(id) ? -1 : int.Parse(id);
+    }
+
+    public void SetUserID(string id)
+    {
+        HasConnected.Item2 = true;
+        uID = string.IsNullOrEmpty(id) ? -1 : int.Parse(id);
+    }
+
+    int uID = -1;
+    int gID = -1;
+
+    public int GetUserId()
+    {
+        return uID;
+    }
+
+    public int GetGameId()
+    {
+        return gID;
+    }
+
+    public void GetDataPostRequest(RequestReturnType returnType, int userId = 1, int gameId = 1, string newValue = "0", UnityEvent<string> callback = null)
+    {
+        StartCoroutine(MakeRequest(returnType, userId, gameId, newValue, callback));
+    }
+
+    private UnityWebRequest CreateRequest(string data = null)
+    {
+        var request = new UnityWebRequest(databaseUrl + dataloaderUrl, "POST");
+        request.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        if (data != null)
+        {
+            byte[] bodyRaw = Encoding.UTF8.GetBytes(ConvertToUrlEncoded(data));
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        }
+
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        return request;
+    }
+
+    private IEnumerator MakeRequest(RequestReturnType returnType, int user = 1, int game = 1, string value = "0", UnityEvent<string> callback = null)
+    {
+        var dataToSend = new
+        {
+            requestType = returnType,
+            userId = user,
+            gameId = game,
+            newValue = value,
+        };
+
+        var request = CreateRequest(dataToSend.ToString());
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError(request.error);
+            yield break;
+        }
+        else
+        {
+            callback?.Invoke(request.downloadHandler.text);
+        }
+    }
+
+    public static string ConvertToUrlEncoded(string input)
+    {
+        // Odstraníme složené závorky a mezery kolem nich
+        input = input.Trim('{', '}').Trim();
+
+        // Použijeme regulární výraz k nalezení všech "key = value" dvojic
+        var matches = Regex.Matches(input, @"\s*(\w+)\s*=\s*([\w\.\-]+)\s*");
+
+        // Pøevod na klíè=hodnota formát
+        var keyValuePairs = new List<string>();
+        foreach (Match match in matches)
+        {
+            string key = match.Groups[1].Value;
+            string value = match.Groups[2].Value;
+
+            // Pokud je hodnota èíslo, necháme ji jako string, aby nebyla zmìnìna
+            keyValuePairs.Add($"{key}={value}");
+        }
+
+        // Spojíme jednotlivé dvojice &-kem
+        return string.Join("&", keyValuePairs);
+    }
 }

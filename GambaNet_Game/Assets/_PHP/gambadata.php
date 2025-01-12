@@ -1,8 +1,10 @@
 <?php
-$servername = "localhost:3306";
-$username = "root";
-$password = "admin";
-$dbname = "gambanet_web";
+header("Access-Control-Allow-Origin: *");
+
+$servername = "innodb.endora.cz:3306";
+$username = "gambagame";
+$password = "GambaNet123";
+$dbname = "gambabase";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -36,7 +38,7 @@ switch ($request_type)
         $sql = "SELECT * FROM game WHERE Id = $game_id";
         $rowName = "Name";
     break;
-    case "GameDataColorRedownload":
+    case "GameDataColorRedDownload":
         $sql = "SELECT * FROM game WHERE Id = $game_id";
         $rowName = "BackgroundRed";
     break;
