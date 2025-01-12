@@ -1,5 +1,6 @@
 ﻿using GambaNet.Infrastructure.Identity;
 using GambaNet_Web.Application.Abstraction;
+using GambaNet_Web.Application.Implementation;
 using GambaNet_Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +12,13 @@ namespace GambaNet_Web.Controllers
     {
         private readonly IBalanceService _balanceService;
         private readonly UserManager<User> _userManager;
+        private readonly IReCaptchaService _reCaptchaService;
 
-        public AccountController(IBalanceService balanceService, UserManager<User> userManager)
+        public AccountController(IBalanceService balanceService, UserManager<User> userManager, IReCaptchaService reCaptchaService)
         {
             _balanceService = balanceService;
             _userManager = userManager;
+            _reCaptchaService = reCaptchaService;
         }
 
         [HttpGet]
@@ -41,7 +44,7 @@ namespace GambaNet_Web.Controllers
                 else if (submitButton == "AddMoney")
                 {
                     // Verify captcha
-                    if (VerifyCaptcha(model.CaptchaResponse))
+                    if (await VerifyCaptcha(model.CaptchaResponse))
                     {
                         // Add money to the user's account
                         var result = await _balanceService.AddBalanceAsync(user.Id.ToString(), model.Amount);
@@ -64,10 +67,9 @@ namespace GambaNet_Web.Controllers
             return View(model);
         }
 
-        private bool VerifyCaptcha(string captchaResponse)
+        private async Task<bool> VerifyCaptcha(string captchaResponse)
         {
-            // Implement your captcha verification logic here
-            return true; // Placeholder
+            return await _reCaptchaService.VerifyCaptchaAsync(captchaResponse);
         }
 
         public IActionResult AddMoneySuccess()

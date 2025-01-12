@@ -65,6 +65,7 @@ builder.Services.AddScoped<IAccountService, AccountIdentityService>();
 builder.Services.AddScoped<IThumbnailUploadService, ThumbnailUploadService>(serviceProvider => new ThumbnailUploadService(serviceProvider.GetService<IWebHostEnvironment>().WebRootPath + "/uploads/"));
 builder.Services.AddScoped<IAdService, AdService>();
 builder.Services.AddScoped<IBalanceService, BalanceService>();
+builder.Services.AddHttpClient<IReCaptchaService, ReCaptchaService>(); // Register ReCaptchaService
 
 
 //Loggovani

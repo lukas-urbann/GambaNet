@@ -38,8 +38,13 @@ namespace GambaNet_Web.Application.Implementation
         public async Task<Ad> GetRandomAdAsync()
         {
             var ads = await _context.Ads.ToListAsync();
+            if (ads.Count == 0)
+            {
+                return null;
+            }
             var random = new Random();
             return ads[random.Next(ads.Count)];
         }
+
     }
 }
