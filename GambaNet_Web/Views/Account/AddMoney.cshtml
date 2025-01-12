@@ -1,0 +1,28 @@
+﻿@model GambaNet_Web.Models.AddMoneyViewModel
+
+@{
+    ViewData["Title"] = "Add Money";
+}
+
+<h2>Add Money</h2>
+
+<form asp-action="AddMoney" method="post">
+    <div class="form-group">
+        <label asp-for="Amount" class="control-label"></label>
+        <input asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="captcha" class="control-label">Captcha</label>
+        <input type="text" name="CaptchaResponse" class="form-control" />
+        <span asp-validation-for="CaptchaResponse" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" name="submitButton" value="PayPal" class="btn btn-primary">Donate via PayPal</button>
+        <button type="submit" name="submitButton" value="AddMoney" class="btn btn-secondary">Add Money</button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
