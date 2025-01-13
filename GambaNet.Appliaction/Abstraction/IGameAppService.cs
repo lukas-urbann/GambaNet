@@ -7,5 +7,6 @@ namespace GambaNet_Web.Application.Abstraction
         IList<Game> Select();
         void Create(Game game);
         bool Delete(int id);
+        void Update(Game game);
     }
 }

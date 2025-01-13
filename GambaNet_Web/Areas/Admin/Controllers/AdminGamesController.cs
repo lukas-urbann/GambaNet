@@ -8,11 +8,11 @@ namespace GambaNet_Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = nameof(Roles.Admin))]
-    public class GamesController : Controller
+    public class AdminGamesController : Controller
     {
         IGameAppService _gameAppService;
 
-        public GamesController(IGameAppService gameAppService)
+        public AdminGamesController(IGameAppService gameAppService)
         {
             _gameAppService = gameAppService;
         }
@@ -35,7 +35,7 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _gameAppService.Create(game);
-                return RedirectToAction(nameof(GamesController.Select));
+                return RedirectToAction(nameof(AdminGamesController.Select));
             }
 
             return View(game);
@@ -46,12 +46,33 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             bool deleted = _gameAppService.Delete(id);
             if (deleted)
             {
-                return RedirectToAction(nameof(GamesController.Select));
+                return RedirectToAction(nameof(AdminGamesController.Select));
             }
             else
             {
                 return NotFound();
             }
         }
+        public IActionResult Edit(int id)
+        {
+            var game = _gameAppService.Select().FirstOrDefault(g => g.Id == id);
+            if (game == null)
+            {
+                return NotFound();
+            }
+            return View(game);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Game game)
+        {
+            if (ModelState.IsValid)
+            {
+                _gameAppService.Update(game);
+                return RedirectToAction(nameof(Select));
+            }
+            return View(game);
+        }
+
     }
 }
