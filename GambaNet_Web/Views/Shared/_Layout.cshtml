@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Gamba<span style="color:#56a4e3;">Net</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -46,7 +46,7 @@
                         }
                     </ul>
                     @{
-                        
+
                         if (User.Identity is { IsAuthenticated: false })
                         {
                             <span class="navbar-dark">
@@ -90,7 +90,32 @@
 
     <footer class="border-top footer text-muted bg-dark">
         <div class="container text-light">
-            <p>&copy;2025 Lukáš Urban & Jakub Kramný.&nbsp;<a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-danger">Prohlášení o ochraně osobních údajů</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted">Stav podpory - nedostupná</span></p>
+            <p>&copy;2025 Lukáš Urban & Jakub Kramný.&nbsp;<a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-danger">Prohlášení o ochraně osobních údajů</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted">Stav podpory - nedostupná</span>
+
+                <span style="position:absolute; right:20px;font-size:10px ">
+                    @{
+                        Random random = new Random();
+                        string message = random.Next(0, 13) switch
+                        {
+                            0 => "90 % gamblerů přestane hrát těsně před jejich další výhrou, nepřestávej!",
+                            1 => "Štěstí přeje odvážným! Pokračuj!",
+                            2 => "Každý pokus tě přibližuje k výhře, nevzdávej to!",
+                            3 => "Kdo se nevzdá, vyhraje!",
+                            4 => "Nezapomeň, že jen lůzři prohrávájí - ale to ty nejsi, takže to nevzdávej!",
+                            5 => "Kdo hraje, ten nezlobí!",
+                            6 => "Rozdáváme peníze zdarma!",
+                            7 => "Bez gamby nejsou koláče!",
+                            8 => "Odvážným štěstí přeje!",
+                            9 => "Není to tak moc o tom, co prohraješ - je to o tom co vyhraješ!",
+                            10 => "Ty texty co tu vyskakujou nemají s psychologickou manipulací nic společného, to říkají slabí doktoři co nikdy nevyhráli pořádnou sumu!",
+                            11 => "Neznám nikoho, kdo by neměl rád peníze zdarma!",
+                            12 => "Rozlučte se s živořením!"
+                        };
+                    }
+                    @message
+                </span>
+                
+            </p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
