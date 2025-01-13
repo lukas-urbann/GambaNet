@@ -46,23 +46,31 @@
                         
                         if (User.Identity is { IsAuthenticated: false })
                         {
-                            <span style="padding-right:16px;">
-                                <a class="nav-link" asp-controller="Leaderboard" asp-action="Index">Leaderboard</a>
-                            </span>
-                            <span style="padding-right:16px;">
-                                <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Login">Přihlásit</a>
-                            </span>
-                            <span style="padding-right:16px;">
-                                <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Register">Registrovat</a>
+                            <span class="navbar-dark">
+                                <span class="navbar-nav">
+                                    <span class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Leaderboard" asp-action="Index">Leaderboard</a>
+                                    </span>
+                                    <span class="nav-item">
+                                        <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Login">Přihlásit</a>
+                                    </span>
+                                    <span class="nav-item">
+                                        <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Register">Registrovat</a>
+                                    </span>
+                                </span>
                             </span>
                         }
                         else
                         {
-                            <span style="padding-right:16px;">
-                                <a class="nav-link" asp-area="" asp-controller="Leaderboard" asp-action="Index">Leaderboard</a>
-                            </span>
-                            <span style="padding-right:16px;">
-                                <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Logout">Odhlásit se (@User.Identity.Name)</a>
+                            <span class="navbar-dark">
+                                <span class="navbar-nav">
+                                    <span class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Leaderboard" asp-action="Index">Síň slávy</a>
+                                    </span>
+                                    <span class="nav-item">
+                                        <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Logout">Odhlásit se (@User.Identity.Name)</a>
+                                    </span>
+                                </span>
                             </span>
                         }
                     }
