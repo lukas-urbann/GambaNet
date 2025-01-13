@@ -6,24 +6,25 @@ namespace GambaNet_Web.Application.Implementation
 {
     public class GameAppService : IGameAppService
     {
-        GambaNetDbContext _gambaNetDbContext;
-        IThumbnailUploadService _thumbnailUploadService;
+        private readonly GambaNetDbContext _gambaNetDbContext;
+        private readonly IThumbnailUploadService _thumbnailUploadService;
 
-        public GameAppService(GambaNetDbContext DbContext)
+        public GameAppService(GambaNetDbContext dbContext, IThumbnailUploadService thumbnailUploadService)
         {
-            _gambaNetDbContext = DbContext;
+            _gambaNetDbContext = dbContext;
+            _thumbnailUploadService = thumbnailUploadService;
         }
 
         public IList<Game> Select()
         {
             return _gambaNetDbContext.Games.ToList();
         }
-        
+
         public void Create(Game game)
         {
             if (game.Image != null)
             {
-                string imagePath = _thumbnailUploadService.FileUpload(game.Image, Path.Combine("thumbnaul", "games"));
+                string imagePath = _thumbnailUploadService.FileUpload(game.Image, Path.Combine("thumbnail", "games"));
                 game.ImagePath = imagePath;
                 game.Image = null;
             }
@@ -34,11 +35,11 @@ namespace GambaNet_Web.Application.Implementation
         public bool Delete(int id)
         {
             bool deleted = false;
-            Game? product = _gambaNetDbContext.Games.FirstOrDefault(prod => prod.Id == id);
+            Game? game = _gambaNetDbContext.Games.FirstOrDefault(g => g.Id == id);
 
-            if (product == null) return deleted;
-            
-            _gambaNetDbContext.Games.Remove(product);
+            if (game == null) return deleted;
+
+            _gambaNetDbContext.Games.Remove(game);
             _gambaNetDbContext.SaveChanges();
             deleted = true;
 

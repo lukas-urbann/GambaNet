@@ -10,11 +10,13 @@ namespace GambaNet_Web.Areas.Admin.Controllers
     [Authorize(Roles = nameof(Roles.Admin))]
     public class AdminGamesController : Controller
     {
-        IGameAppService _gameAppService;
+        private readonly IGameAppService _gameAppService;
+        private readonly IThumbnailUploadService _thumbnailUploadService;
 
-        public AdminGamesController(IGameAppService gameAppService)
+        public AdminGamesController(IGameAppService gameAppService, IThumbnailUploadService thumbnailUploadService)
         {
             _gameAppService = gameAppService;
+            _thumbnailUploadService = thumbnailUploadService;
         }
 
         public IActionResult Select()
@@ -22,25 +24,31 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             IList<Game> games = _gameAppService.Select();
             return View(games);
         }
-        
+
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-        
+
         [HttpPost]
         public IActionResult Create(Game game)
         {
             if (ModelState.IsValid)
             {
+                if (game.Image != null)
+                {
+                    string imagePath = _thumbnailUploadService.FileUpload(game.Image, Path.Combine("thumbnail", "games"));
+                    game.ImagePath = imagePath;
+                    game.Image = null;
+                }
                 _gameAppService.Create(game);
-                return RedirectToAction(nameof(AdminGamesController.Select));
+                return RedirectToAction(nameof(Select));
             }
 
             return View(game);
         }
-        
+
         public IActionResult Delete(int id)
         {
             bool deleted = _gameAppService.Delete(id);
@@ -53,6 +61,7 @@ namespace GambaNet_Web.Areas.Admin.Controllers
                 return NotFound();
             }
         }
+
         public IActionResult Edit(int id)
         {
             var game = _gameAppService.Select().FirstOrDefault(g => g.Id == id);
@@ -68,11 +77,17 @@ namespace GambaNet_Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (game.Image != null)
+                {
+                    string imagePath = _thumbnailUploadService.FileUpload(game.Image, Path.Combine("thumbnail", "games"));
+                    game.ImagePath = imagePath;
+                    game.Image = null;
+                }
                 _gameAppService.Update(game);
                 return RedirectToAction(nameof(Select));
             }
             return View(game);
         }
-
     }
 }
+
