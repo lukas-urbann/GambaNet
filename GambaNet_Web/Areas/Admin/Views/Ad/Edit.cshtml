@@ -4,8 +4,8 @@
     ViewData["Title"] = "Upravit reklamu";
 }
 
-<h2>Upravit reklamu</h2>
-
+<h1>@ViewData["Title"]</h1>
+<br />
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Title" class="control-label">Název</label>

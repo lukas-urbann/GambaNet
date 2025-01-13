@@ -1,11 +1,11 @@
 ﻿@model GambaNet_Web.Domain.Entities.Ad
 
 @{
-    ViewData["Title"] = "Ad Deleted";
+    ViewData["Title"] = "Reklama smazána";
 }
 
-<h1>Reklama smazána</h1>
-
+<h1>@ViewData["Title"]</h1>
+<br />
 <p>Reklama s názvem "@Model.Title" byla smazána.</p>
 
 <a asp-action="Index" class="btn btn-primary">Zpátky</a>
