@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Přihlášení vyžadováno";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="alert alert-warning" role="alert">
+    Pro zobrazení žebříčku se musíte přihlásit.
+</div>
+
+<a class="btn btn-primary" asp-area="Security" asp-controller="Account" asp-action="Login">Přihlásit se</a>
+<a class="btn btn-secondary" asp-area="Security" asp-controller="Account" asp-action="Register">Registrovat</a>

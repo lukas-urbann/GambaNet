@@ -28,8 +28,8 @@
                         <th scope="row">@ad.Id</th>
                         <td>@ad.Title</td>
                         <td>@ad.Url</td>
-                        <td><a asp-action="Edit" asp-route-id="@ad.Id">Upravit</a></td>
-                        <td><a asp-action="Delete" asp-route-id="@ad.Id" onclick="return ConfirmDelete();">Smazat</a></td>
+                        <td><a asp-action="Edit" class="btn btn-primary" asp-route-id="@ad.Id">Upravit</a></td>
+                        <td><a asp-action="Delete" class="btn btn-danger" asp-route-id="@ad.Id" onclick="return ConfirmDelete();">Smazat</a></td>
                     </tr>
                 }
             </tbody>

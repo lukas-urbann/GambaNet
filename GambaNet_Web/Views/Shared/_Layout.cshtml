@@ -43,6 +43,7 @@
                         }
                     </ul>
                     @{
+                        
                         if (User.Identity is { IsAuthenticated: false })
                         {
                             <li class="nav-item">
@@ -58,7 +59,7 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Leaderboard" asp-action="Index">Leaderboard</a>
+                                <a class="nav-link" asp-area="" asp-controller="Leaderboard" asp-action="Index">Leaderboard</a>
                             </li>
                             <span style="padding-right:16px;">
                                 <a class="nav-link" asp-area="Security" asp-controller="Account" asp-action="Logout">Odhlásit se (@User.Identity.Name)</a>
