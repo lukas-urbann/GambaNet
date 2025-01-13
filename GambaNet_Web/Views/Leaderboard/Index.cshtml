@@ -2,7 +2,7 @@
 @model IList<User>
 
 @{
-    ViewData["Title"] = "Leaderboard";
+    ViewData["Title"] = "Tabulka hráčů s největším obnosem peněz";
     int pageNumber = ViewBag.PageNumber;
     int pageSize = ViewBag.PageSize;
     int totalUsers = ViewBag.TotalUsers;
@@ -16,9 +16,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">Name</th>
-                <th scope="col">Balance</th>
+                <th scope="col">#</th>
+                <th scope="col">Jméno</th>
+                <th scope="col">Zůstatek</th>
             </tr>
         </thead>
         <tbody>
