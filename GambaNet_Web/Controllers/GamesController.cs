@@ -20,28 +20,28 @@ namespace GambaNet_Web.Controllers
             _homeService = homeService;
         }
 
-        [Authorize(Roles = nameof(Roles.Default))]
+        [Authorize(Roles = $"{nameof(Roles.Admin)},{nameof(Roles.Default)}")]
         public IActionResult Index()
         {
             GameViewModel gameModel = _homeService.GetIndexViewModel();
             return View(gameModel);
         }
 
-        [Authorize(Roles = nameof(Roles.Default))]
-        public IActionResult Cups(int id)
+        [Authorize(Roles = $"{nameof(Roles.Admin)},{nameof(Roles.Default)}")]
+        public IActionResult Cups(int id) 
         {
             Tuple<int, string?> ad = new Tuple<int, string?>(id, _userManager.GetUserId(User));
             return View(ad);
         }
 
-        [Authorize(Roles = nameof(Roles.Default))]
+        [Authorize(Roles = $"{nameof(Roles.Admin)},{nameof(Roles.Default)}")]
         public IActionResult Plinko(int id)
         {
             Tuple<int, string?> ad = new Tuple<int, string?>(id, _userManager.GetUserId(User));
             return View(ad);
         }
 
-        [Authorize(Roles = nameof(Roles.Default))]
+        [Authorize(Roles = $"{nameof(Roles.Admin)},{nameof(Roles.Default)}")]
         public IActionResult Slot(int id)
         {
             Tuple<int, string?> ad = new Tuple<int, string?>(id, _userManager.GetUserId(User));
