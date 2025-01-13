@@ -68,6 +68,12 @@ builder.Services.AddScoped<IAdService, AdService>();
 builder.Services.AddScoped<IBalanceService, BalanceService>();
 builder.Services.AddHttpClient<IReCaptchaService, ReCaptchaService>(); // Register ReCaptchaService
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IFileUploadService, FileUploadService>(serviceProvider =>
+{
+    var webHostEnvironment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+    var uploadPath = Path.Combine(webHostEnvironment.WebRootPath, "uploads");
+    return new FileUploadService(uploadPath);
+});
 
 //Loggovani
 builder.Logging.ClearProviders();

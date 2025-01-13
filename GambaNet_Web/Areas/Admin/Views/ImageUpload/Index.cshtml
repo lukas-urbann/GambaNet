@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Nahrávání obrázků";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Upload" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label for="image">Vyberte obrázek k nahrání:</label>
+        <input type="file" name="image" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="fileName">Název souboru:</label>
+        <input type="text" name="fileName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="folderName">Typ nahrávání:</label>
+        <select name="folderName" class="form-control" required>
+            <option value="games">Hra</option>
+            <option value="ads">Reklama</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Nahrát</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@if (ViewBag.UploadResult != null)
+{
+    <div class="alert alert-success mt-3">
+        Obrázek byl úspěšně nahrán: <a href="@ViewBag.UploadResult">@ViewBag.UploadResult</a>
+    </div>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger mt-3">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+

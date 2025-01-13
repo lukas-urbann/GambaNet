@@ -31,6 +31,7 @@ namespace GambaNet_Web.Domain.Entities
 
         public string? ImagePath { get; set; }
         [NotMapped]
+        [FileContent("image")]
         public IFormFile? Image { get; set; }
     }
 }

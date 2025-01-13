@@ -20,9 +20,9 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var ads = await _adService.GetAllAdsAsync();
+            var ads = _adService.GetAllAdsAsync().Result;
             return View(ads);
         }
 
@@ -33,19 +33,19 @@ namespace GambaNet_Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Ad ad, IFormFile image)
+        public IActionResult Create(Ad ad)
         {
             if (ModelState.IsValid)
             {
-                await _adService.UploadAdAsync(ad, image);
+                _adService.AddAdAsync(ad).Wait();
                 return RedirectToAction(nameof(Index));
             }
             return View(ad);
         }
 
-        public async Task<IActionResult> Edit(int id)
+        public IActionResult Edit(int id)
         {
-            var ad = await _adService.GetAdByIdAsync(id);
+            var ad = _adService.GetAdByIdAsync(id).Result;
             if (ad == null)
             {
                 return NotFound();
@@ -55,7 +55,7 @@ namespace GambaNet_Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Ad ad)
+        public IActionResult Edit(int id, Ad ad)
         {
             if (id != ad.Id)
             {
@@ -64,15 +64,15 @@ namespace GambaNet_Web.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                await _adService.UpdateAdAsync(ad);
+                _adService.UpdateAdAsync(ad).Wait();
                 return RedirectToAction(nameof(Index));
             }
             return View(ad);
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var ad = await _adService.GetAdByIdAsync(id);
+            var ad = _adService.GetAdByIdAsync(id).Result;
             if (ad == null)
             {
                 return NotFound();
@@ -82,12 +82,12 @@ namespace GambaNet_Web.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
             try
             {
-                await _adService.DeleteAdAsync(id);
-                var ad = await _adService.GetAdByIdAsync(id);
+                _adService.DeleteAdAsync(id).Wait();
+                var ad = _adService.GetAdByIdAsync(id).Result;
                 if (ad == null)
                 {
                     _logger.LogInformation($"Ad with ID {id} has been confirmed deleted.");
@@ -104,6 +104,6 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-
     }
 }
+
