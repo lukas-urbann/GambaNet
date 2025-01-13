@@ -4,6 +4,9 @@
     ViewData["Title"] = "Gamba Hry";
 }
 
+<h1>@ViewData["Title"]</h1>
+<br />
+
 <div class="container">
 <div class="row">
 
@@ -13,7 +16,7 @@
     {
         <div class="col-4 mb-4 d-flex">
         <div class="card h-100">
-            <img class="card-img-top" src="~/img/thumbnail/thumbnail_cups.png" alt="Card image cap">
+            <img class="card-img-top" src="@game.ImagePath" alt="Card image cap">
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">@game.Name</h5>
                 <p class="card-text">@game.Description</p>

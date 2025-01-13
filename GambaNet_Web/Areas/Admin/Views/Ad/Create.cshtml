@@ -4,23 +4,26 @@
     ViewData["Title"] = "Vytvořit reklamu";
 }
 
-<h2>Vytvoření reklamy</h2>
-
+<h1>@ViewData["Title"]</h1>
+<br />
 <form asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Title" class="control-label">Název</label>
         <input asp-for="Title" class="form-control" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
         <label for="image" class="control-label">Obrázek</label>
         <input type="file" name="image" class="form-control" />
     </div>
+    <br />
     <div class="form-group">
         <label asp-for="Url" class="control-label">URL odkaz</label>
         <input asp-for="Url" class="form-control" />
         <span asp-validation-for="Url" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />
     </div>
