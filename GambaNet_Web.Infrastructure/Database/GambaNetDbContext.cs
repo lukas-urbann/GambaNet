@@ -4,6 +4,8 @@ using GambaNet_Web.Infrastructure.Database.Seeding;
 using GambaNet.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using GambaNet.Infrastructure.Database.Seeding;
+using GambaNet.Domain.Entities;
 
 namespace GambaNet_Web.Infrastructure.Database
 {
@@ -24,7 +26,10 @@ namespace GambaNet_Web.Infrastructure.Database
 
             GameInit gameInit = new GameInit();
             modelBuilder.Entity<Game>().HasData(gameInit.GetGames());
-            
+
+            QuoteInit quoteInit = new QuoteInit();
+            modelBuilder.Entity<Quote>().HasData(quoteInit.GetQuotes());
+
             TransactionTypeInit transactionTypeInit = new TransactionTypeInit();
             modelBuilder.Entity<TransactionType>().HasData(transactionTypeInit.GetTransactionTypes());
             
