@@ -20,8 +20,8 @@
 }
 
 <div class="container">
-    <h1>User Info</h1>
-
+    <h1>Uživatelské informace</h1>
+    <br />
     @if (isAuthenticated && user != null)
     {
         <div>
@@ -32,6 +32,7 @@
             <p><strong>Jméno:</strong> @user.FirstName</p>
             <p><strong>Příjmení:</strong> @user.LastName</p>
             <p><strong>Peníze:</strong> @balance</p>
+            <br />
             <form method="get" asp-controller="Account" asp-action="AddMoney">
                 <button type="submit" class="btn btn-primary">Dobít kredit</button>
             </form>
