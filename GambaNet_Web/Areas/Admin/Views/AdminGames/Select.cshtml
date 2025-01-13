@@ -21,15 +21,17 @@
                                 </tr>
                         </thead>
                         <tbody>
-                        @foreach (var g in Model)
-                        {
-                        <tr>
-                                <th scope="row">@g.Id</th>
-                                <td>@g.Name</td>
-                                <td>@g.Description</td>
-                                <td><a asp-action="Delete" asp-route-id="@g.Id" onclick="return ConfirmDelete();">Smazat</a></td>
-                        </tr>
-                        }
+
+                @foreach (var g in Model)
+                {
+                    <tr>
+                        <th scope="row">@g.Id</th>
+                        <td>@g.Name</td>
+                        <td>@g.Description</td>
+                        <td><a asp-action="Edit" asp-route-id="@g.Id" class="btn btn-primary">Editovat</a></td>
+                        <td><a asp-action="Delete" asp-route-id="@g.Id" class="btn btn-danger" onclick="return ConfirmDelete();">Smazat</a></td>
+                    </tr>
+                }
                 </tbody>
                 </table>
         }
