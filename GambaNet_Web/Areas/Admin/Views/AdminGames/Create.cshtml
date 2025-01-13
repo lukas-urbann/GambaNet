@@ -8,12 +8,13 @@
 <br />
 <form asp-action="Create" enctype="multipart/form-data">
     <div class="form-group">
-        <label asp-for="Name" class="control-label"></label>
+        <label asp-for="Name" class="control-label">Název hry</label>
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
-        <label asp-for="GameType" class="control-label"></label>
+        <label asp-for="GameType" class="control-label">Typ hry</label>
         <select asp-for="GameType" class="form-control">
             <option value="Slot">Slot</option>
             <option value="Plinko">Plinko</option>
@@ -21,41 +22,48 @@
         </select>
         <span asp-validation-for="GameType" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
-        <label asp-for="Description" class="control-label"></label>
+        <label asp-for="Description" class="control-label">Popis hry</label>
         <input asp-for="Description" class="form-control" />
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
-        <label asp-for="Winrate" class="control-label"></label>
+        <label asp-for="Winrate" class="control-label">Výdělečnost ( ͡° ͜ʖ ͡°) (Winrate %)</label>
         <input asp-for="Winrate" class="form-control" type="number" min="0" max="100" />
         <span asp-validation-for="Winrate" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
-        <label asp-for="BackgroundRed" class="control-label"></label>
+        <label asp-for="BackgroundRed" class="control-label">Červená (0-255)</label>
         <input asp-for="BackgroundRed" class="form-control" type="number" min="0" max="255" />
         <span asp-validation-for="BackgroundRed" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
-        <label asp-for="BackgroundGreen" class="control-label"></label>
+        <label asp-for="BackgroundGreen" class="control-label">Zelená (0-255)</label>
         <input asp-for="BackgroundGreen" class="form-control" type="number" min="0" max="255" />
         <span asp-validation-for="BackgroundGreen" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
-        <label asp-for="BackgroundBlue" class="control-label"></label>
+        <label asp-for="BackgroundBlue" class="control-label">Modrá (0-255)</label>
         <input asp-for="BackgroundBlue" class="form-control" type="number" min="0" max="255" />
         <span asp-validation-for="BackgroundBlue" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
-        <label asp-for="Image" class="control-label"></label>
+        <label asp-for="Image" class="control-label">Obrázek</label>
         <input asp-for="Image" class="form-control" type="file" />
         <span asp-validation-for="Image" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
         <input type="submit" value="Vytvořit" class="btn btn-primary" />
     </div>
 </form>
-
+<br />
 <div>
     <a asp-action="Select">Zpět na seznam</a>
 </div>
