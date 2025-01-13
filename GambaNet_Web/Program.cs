@@ -67,7 +67,7 @@ builder.Services.AddScoped<IThumbnailUploadService, ThumbnailUploadService>(serv
 builder.Services.AddScoped<IAdService, AdService>();
 builder.Services.AddScoped<IBalanceService, BalanceService>();
 builder.Services.AddHttpClient<IReCaptchaService, ReCaptchaService>(); // Register ReCaptchaService
-
+builder.Services.AddScoped<IUserService, UserService>();
 
 //Loggovani
 builder.Logging.ClearProviders();

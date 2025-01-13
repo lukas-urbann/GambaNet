@@ -12,6 +12,7 @@ namespace GambaNet_Web.Infrastructure.Database
         public DbSet<TransactionType> TransactionType { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Ad> Ads { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public GambaNetDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
