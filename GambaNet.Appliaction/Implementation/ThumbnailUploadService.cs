@@ -1,36 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GambaNet_Web.Application.Abstraction;
+﻿using GambaNet_Web.Application.Abstraction;
 using Microsoft.AspNetCore.Http;
 
-namespace GambaNet_Web.Application.Implementation
+public class ThumbnailUploadService : IThumbnailUploadService
 {
-    public class ThumbnailUploadService : IThumbnailUploadService
+    private readonly string _uploadPath;
+
+    public ThumbnailUploadService(string uploadPath)
     {
-        public string Path { get; set; }
-
-        public ThumbnailUploadService(string path)
-        {
-            this.Path = path;
-        }
-
-        public string FileUpload(IFormFile fileToUpload, string folderNameOnServer)
-        {
-            string path = Path + folderNameOnServer;
-            if (!System.IO.Directory.Exists(path))
-            {
-                System.IO.Directory.CreateDirectory(path);
-            }
-            string fileName = Guid.NewGuid().ToString() + fileToUpload.FileName;
-            string fullPath = path + "/" + fileName;
-            using (var stream = System.IO.File.Create(fullPath))
-            {
-                fileToUpload.CopyTo(stream);
-            }
-            return fileName;
-        }
+        _uploadPath = uploadPath;
     }
+
+    public string FileUpload(IFormFile fileToUpload, string folderNameOnServer)
+    {
+        if (fileToUpload == null || fileToUpload.Length == 0)
+        {
+            throw new ArgumentException("No file provided for upload.");
+        }
+
+        var uploadFolder = Path.Combine(_uploadPath, folderNameOnServer);
+        if (!Directory.Exists(uploadFolder))
+        {
+            Directory.CreateDirectory(uploadFolder);
+        }
+
+        var fileName = Path.GetFileName(fileToUpload.FileName);
+        var filePath = Path.Combine(uploadFolder, fileName);
+
+        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        {
+            fileToUpload.CopyTo(fileStream);
+        }
+
+        return Path.Combine(folderNameOnServer, fileName);
+    }
+
+    
 }

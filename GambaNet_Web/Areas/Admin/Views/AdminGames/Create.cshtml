@@ -8,7 +8,7 @@
 
 <form asp-action="Create" enctype="multipart/form-data">
     <div class="form-group">
-        <label asp-for="Name" class="control-label">Jméno</label>
+        <label asp-for="Name" class="control-label"></label>
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
@@ -18,7 +18,7 @@
         <span asp-validation-for="GameType" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Description" class="control-label">Popis</label>
+        <label asp-for="Description" class="control-label"></label>
         <input asp-for="Description" class="form-control" />
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
@@ -28,22 +28,22 @@
         <span asp-validation-for="Winrate" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="BackgroundRed" class="control-label">RED</label>
+        <label asp-for="BackgroundRed" class="control-label"></label>
         <input asp-for="BackgroundRed" class="form-control" />
         <span asp-validation-for="BackgroundRed" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="BackgroundGreen" class="control-label">GREEN</label>
+        <label asp-for="BackgroundGreen" class="control-label"></label>
         <input asp-for="BackgroundGreen" class="form-control" />
         <span asp-validation-for="BackgroundGreen" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="BackgroundBlue" class="control-label">BLUE</label>
+        <label asp-for="BackgroundBlue" class="control-label"></label>
         <input asp-for="BackgroundBlue" class="form-control" />
         <span asp-validation-for="BackgroundBlue" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Image" class="control-label">THUMBNAUIL</label>
+        <label asp-for="Image" class="control-label"></label>
         <input asp-for="Image" class="form-control" type="file" />
         <span asp-validation-for="Image" class="text-danger"></span>
     </div>
@@ -59,3 +59,4 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
