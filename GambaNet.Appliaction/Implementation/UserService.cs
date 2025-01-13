@@ -18,11 +18,13 @@ namespace GambaNet_Web.Application.Implementation
             _context = context;
         }
 
-        public IList<User> GetTopUsersByBalance(int count)
+        public IList<User> GetTopUsersByBalance(int pageNumber, int pageSize, out int totalUsers)
         {
+            totalUsers = _context.Users.Count();
             return _context.Users
                 .OrderByDescending(u => u.Balance)
-                .Take(count)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToList();
         }
     }

@@ -12,9 +12,15 @@ namespace GambaNet_Web.Controllers
             _userService = userService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber = 1, int pageSize = 10)
         {
-            var topUsers = _userService.GetTopUsersByBalance(10); // Fetch top 10 users by balance
+            int totalUsers;
+            var topUsers = _userService.GetTopUsersByBalance(pageNumber, pageSize, out totalUsers);
+
+            ViewBag.PageNumber = pageNumber;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalUsers = totalUsers;
+
             return View(topUsers);
         }
     }

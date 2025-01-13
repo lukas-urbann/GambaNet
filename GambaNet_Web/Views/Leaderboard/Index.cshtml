@@ -3,6 +3,10 @@
 
 @{
     ViewData["Title"] = "Leaderboard";
+    int pageNumber = ViewBag.PageNumber;
+    int pageSize = ViewBag.PageSize;
+    int totalUsers = ViewBag.TotalUsers;
+    int totalPages = (int)Math.Ceiling((double)totalUsers / pageSize);
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -21,13 +25,36 @@
             @for (int i = 0; i < Model.Count; i++)
             {
                 <tr>
-                    <th scope="row">@i + 1</th>
+                    <th scope="row">@((pageNumber - 1) * pageSize + i + 1)</th>
                     <td>@Model[i].FirstName @Model[i].LastName</td>
                     <td>@Model[i].Balance</td>
                 </tr>
             }
         </tbody>
     </table>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @if (pageNumber > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(pageNumber - 1)" asp-route-pageSize="@pageSize">Previous</a>
+                </li>
+            }
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == pageNumber ? "active" : "")">
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-pageSize="@pageSize">@i</a>
+                </li>
+            }
+            @if (pageNumber < totalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(pageNumber + 1)" asp-route-pageSize="@pageSize">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
 }
 else
 {

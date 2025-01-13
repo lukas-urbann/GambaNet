@@ -9,7 +9,6 @@ namespace GambaNet_Web.Application.Abstraction
 {
     public interface IUserService
     {
-        IList<User> GetTopUsersByBalance(int count);
-
+        IList<User> GetTopUsersByBalance(int pageNumber, int pageSize, out int totalUsers);
     }
 }
