@@ -14,7 +14,11 @@
     </div>
     <div class="form-group">
         <label asp-for="GameType" class="control-label"></label>
-        <input asp-for="GameType" class="form-control" />
+        <select asp-for="GameType" class="form-control">
+            <option value="Slot">Slot</option>
+            <option value="Plinko">Plinko</option>
+            <option value="Cups">Cups</option>
+        </select>
         <span asp-validation-for="GameType" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -24,22 +28,22 @@
     </div>
     <div class="form-group">
         <label asp-for="Winrate" class="control-label"></label>
-        <input asp-for="Winrate" class="form-control" />
+        <input asp-for="Winrate" class="form-control" type="number" min="0" max="100" />
         <span asp-validation-for="Winrate" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="BackgroundRed" class="control-label"></label>
-        <input asp-for="BackgroundRed" class="form-control" />
+        <input asp-for="BackgroundRed" class="form-control" type="number" min="0" max="255" />
         <span asp-validation-for="BackgroundRed" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="BackgroundGreen" class="control-label"></label>
-        <input asp-for="BackgroundGreen" class="form-control" />
+        <input asp-for="BackgroundGreen" class="form-control" type="number" min="0" max="255" />
         <span asp-validation-for="BackgroundGreen" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="BackgroundBlue" class="control-label"></label>
-        <input asp-for="BackgroundBlue" class="form-control" />
+        <input asp-for="BackgroundBlue" class="form-control" type="number" min="0" max="255" />
         <span asp-validation-for="BackgroundBlue" class="text-danger"></span>
     </div>
     <div class="form-group">
