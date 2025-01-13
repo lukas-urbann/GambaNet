@@ -38,6 +38,12 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             {
                 if (game.Image != null)
                 {
+                    if (!ValidateImageFile(game.Image, out string errorMessage))
+                    {
+                        ModelState.AddModelError("Image", errorMessage);
+                        return View(game);
+                    }
+
                     string imagePath = _thumbnailUploadService.FileUpload(game.Image, Path.Combine("thumbnail", "games"));
                     game.ImagePath = imagePath;
                     game.Image = null;
@@ -48,6 +54,8 @@ namespace GambaNet_Web.Areas.Admin.Controllers
 
             return View(game);
         }
+
+
 
         public IActionResult Delete(int id)
         {
@@ -79,6 +87,12 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             {
                 if (game.Image != null)
                 {
+                    if (!ValidateImageFile(game.Image, out string errorMessage))
+                    {
+                        ModelState.AddModelError("Image", errorMessage);
+                        return View(game);
+                    }
+
                     string imagePath = _thumbnailUploadService.FileUpload(game.Image, Path.Combine("thumbnail", "games"));
                     game.ImagePath = imagePath;
                     game.Image = null;
@@ -88,6 +102,28 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             }
             return View(game);
         }
-    }
-}
 
+
+        private bool ValidateImageFile(IFormFile file, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+
+            if (file.Length > 5 * 1024 * 1024)
+            {
+                errorMessage = "Soubor je moc veliký.";
+                return false;
+            }
+
+            var allowedFileTypes = new[] { "image/jpeg", "image/png", "image/gif" };
+            if (!allowedFileTypes.Contains(file.ContentType))
+            {
+                errorMessage = "Jenom JPEG, PNG a GIF.";
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+
+}
