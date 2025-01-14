@@ -1,11 +1,9 @@
 ﻿using GambaNet_Web.Domain.Entities;
 using GambaNet_Web.Application.Abstraction;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using GambaNet_Web.Infrastructure.Database;
@@ -75,8 +73,15 @@ namespace GambaNet_Web.Application.Implementation
                 throw;
             }
         }
+
+        public async Task DeleteAdAsync(int id)
+        {
+            var ad = await _context.Ads.FindAsync(id);
+            if (ad != null)
+            {
+                _context.Ads.Remove(ad);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
-
-
-

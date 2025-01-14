@@ -15,5 +15,6 @@ namespace GambaNet_Web.Application.Abstraction
         bool Delete(int id);
         void Update(Ad ad);
         Task<Ad> GetRandomAdAsync();
+        Task DeleteAdAsync(int id);
     }
 }
