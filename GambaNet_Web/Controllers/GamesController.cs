@@ -42,7 +42,7 @@ namespace GambaNet_Web.Controllers
         }
 
         [Authorize(Roles = $"{nameof(Roles.Admin)},{nameof(Roles.Default)}")]
-        public IActionResult Slot(int id)
+        public IActionResult Slots(int id)
         {
             Tuple<int, string?> ad = new Tuple<int, string?>(id, _userManager.GetUserId(User));
             return View(ad);
