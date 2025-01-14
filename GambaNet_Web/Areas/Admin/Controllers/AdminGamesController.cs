@@ -34,6 +34,7 @@ namespace GambaNet_Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                game.ImagePath = GetThumbnailPath(game.GameType);
                 _gameAppService.Create(game);
                 return RedirectToAction(nameof(Select));
             }
@@ -69,10 +70,26 @@ namespace GambaNet_Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                game.ImagePath = GetThumbnailPath(game.GameType);
                 _gameAppService.Update(game);
                 return RedirectToAction(nameof(Select));
             }
             return View(game);
+        }
+
+        private string GetThumbnailPath(string gameType)
+        {
+            switch (gameType)
+            {
+                case "Cups":
+                    return "/img/thumbnail/thumbnail_cups.png";
+                case "Plinko":
+                    return "/img/thumbnail/thumbnail_plinko.png";
+                case "Slots":
+                    return "/img/thumbnail/thumbnail_slots.png";
+                default:
+                    return "/img/thumbnails/default.png";
+            }
         }
     }
 }

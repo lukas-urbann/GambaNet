@@ -10,12 +10,10 @@ namespace GambaNet_Web.Application.Abstraction
 {
     public interface IAdService
     {
-        Task UploadAdAsync(Ad ad, IFormFile image);
+        IList<Ad> Select();
+        void Create(Ad ad);
+        bool Delete(int id);
+        void Update(Ad ad);
         Task<Ad> GetRandomAdAsync();
-        Task<IEnumerable<Ad>> GetAllAdsAsync(); // Add this method
-        Task<Ad> GetAdByIdAsync(int id); // Add this method
-        Task AddAdAsync(Ad ad); // Add this method
-        Task UpdateAdAsync(Ad ad); // Add this method
-        Task DeleteAdAsync(int id); // Add this method
     }
 }

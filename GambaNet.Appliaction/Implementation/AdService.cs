@@ -26,27 +26,37 @@ namespace GambaNet_Web.Application.Implementation
             _logger = logger;
         }
 
-        public async Task UploadAdAsync(Ad ad, IFormFile image)
+        public IList<Ad> Select()
         {
-            try
+            return _context.Ads.ToList();
+        }
+        public void Create(Ad ad)
+        {
+            _context.Ads.Add(ad);
+            _context.SaveChanges();
+        }
+        public bool Delete(int id)
+        {
+            bool deleted = false;
+            Ad? ad = _context.Ads.FirstOrDefault(a => a.Id == id);
+            if (ad == null) return deleted;
+            _context.Ads.Remove(ad);
+            _context.SaveChanges();
+            deleted = true;
+            return deleted;
+        }
+        public void Update(Ad ad)
+        {
+            var existingAd = _context.Ads.FirstOrDefault(a => a.Id == ad.Id);
+            if (existingAd != null)
             {
-                var filePath = Path.Combine(_environment.WebRootPath, "ads", image.FileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await image.CopyToAsync(stream);
-                }
-                ad.ImagePath = $"/ads/{image.FileName}";
-                _context.Ads.Add(ad);
-                await _context.SaveChangesAsync();
-                _logger.LogInformation("Ad uploaded successfully");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while uploading the ad");
-                throw;
+                existingAd.Title = ad.Title;
+                existingAd.ImagePath = ad.ImagePath;
+                existingAd.Url = ad.Url;
+                _context.Ads.Update(existingAd);
+                _context.SaveChanges();
             }
         }
-
         public async Task<Ad> GetRandomAdAsync()
         {
             try
@@ -63,78 +73,6 @@ namespace GambaNet_Web.Application.Implementation
             {
                 _logger.LogError(ex, "An error occurred while getting a random ad");
                 throw;
-            }
-        }
-
-        public async Task<IEnumerable<Ad>> GetAllAdsAsync()
-        {
-            try
-            {
-                return await _context.Ads.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while getting all ads");
-                throw;
-            }
-        }
-
-        public async Task<Ad> GetAdByIdAsync(int id)
-        {
-            try
-            {
-                return await _context.Ads.FindAsync(id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while getting the ad by ID");
-                throw;
-            }
-        }
-
-        public async Task AddAdAsync(Ad ad)
-        {
-            try
-            {
-                _context.Ads.Add(ad);
-                await _context.SaveChangesAsync();
-                _logger.LogInformation("Ad added successfully");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while adding the ad");
-                throw;
-            }
-        }
-
-        public async Task UpdateAdAsync(Ad ad)
-        {
-            try
-            {
-                _context.Ads.Update(ad);
-                await _context.SaveChangesAsync();
-                _logger.LogInformation("Ad updated successfully");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while updating the ad");
-                throw;
-            }
-        }
-
-        public async Task DeleteAdAsync(int id)
-        {
-            _logger.LogInformation($"Attempting to delete ad with ID {id}");
-            var ad = await _context.Ads.FindAsync(id);
-            if (ad != null)
-            {
-                _context.Ads.Remove(ad);
-                await _context.SaveChangesAsync();
-                _logger.LogInformation($"Ad with ID {id} deleted successfully");
-            }
-            else
-            {
-                _logger.LogWarning($"Ad with ID {id} not found");
             }
         }
     }

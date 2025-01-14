@@ -16,9 +16,9 @@
     <div class="form-group">
         <label asp-for="GameType" class="control-label">Typ hry</label>
         <select asp-for="GameType" class="form-control">
-            <option value="Slot">Slot</option>
-            <option value="Plinko">Plinko</option>
             <option value="Cups">Cups</option>
+            <option value="Plinko">Plinko</option>
+            <option value="Slots">Slots</option>
         </select>
         <span asp-validation-for="GameType" class="text-danger"></span>
     </div>
@@ -53,11 +53,6 @@
         <span asp-validation-for="BackgroundBlue" class="text-danger"></span>
     </div>
     <br />
-    <div class="form-group">
-        <label asp-for="Image" class="control-label">Obrázek</label>
-        <input asp-for="Image" class="form-control" type="file" />
-        <span asp-validation-for="Image" class="text-danger"></span>
-    </div>
     <br />
     <div class="form-group">
         <input type="submit" value="Uložit" class="btn btn-primary" />
@@ -71,4 +66,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-

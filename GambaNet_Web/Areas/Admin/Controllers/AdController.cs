@@ -1,51 +1,33 @@
-﻿using GambaNet.Infrastructure.Identity.Enums;
-using GambaNet_Web.Application.Abstraction;
+﻿using Microsoft.AspNetCore.Mvc;
 using GambaNet_Web.Domain.Entities;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using GambaNet_Web.Infrastructure.Database;
 
 namespace GambaNet_Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = nameof(Roles.Admin))]
     public class AdController : Controller
     {
-        private readonly IAdService _adService;
-        private readonly ILogger<AdController> _logger;
+        private readonly GambaNetDbContext _context;
 
-        public AdController(IAdService adService, ILogger<AdController> logger)
+        public AdController(GambaNetDbContext context)
         {
-            _adService = adService;
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        // GET: Admin/Ad
+        public async Task<IActionResult> Index()
         {
-            var ads = _adService.GetAllAdsAsync().Result;
+            var ads = await _context.Ads.ToListAsync();
             return View(ads);
         }
 
-        public IActionResult Create()
+        // GET: Admin/Ad/Edit/5
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Ad ad)
-        {
-            if (ModelState.IsValid)
-            {
-                _adService.AddAdAsync(ad).Wait();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(ad);
-        }
-
-        public IActionResult Edit(int id)
-        {
-            var ad = _adService.GetAdByIdAsync(id).Result;
+            var ad = await _context.Ads.FindAsync(id);
             if (ad == null)
             {
                 return NotFound();
@@ -53,57 +35,53 @@ namespace GambaNet_Web.Areas.Admin.Controllers
             return View(ad);
         }
 
+        // POST: Admin/Ad/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Ad ad)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Url")] Ad ad, IFormFile image)
         {
             if (id != ad.Id)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                _adService.UpdateAdAsync(ad).Wait();
+                try
+                {
+                    if (image != null && image.Length > 0)
+                    {
+                        // Save the image to a location and set the path to ad.ImagePath
+                        var imagePath = Path.Combine("wwwroot/images", image.FileName);
+                        using (var stream = new FileStream(imagePath, FileMode.Create))
+                        {
+                            await image.CopyToAsync(stream);
+                        }
+                        ad.ImagePath = $"/images/{image.FileName}";
+                    }
+
+                    _context.Update(ad);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AdExists(ad.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(ad);
         }
 
-        public IActionResult Delete(int id)
+        private bool AdExists(int id)
         {
-            var ad = _adService.GetAdByIdAsync(id).Result;
-            if (ad == null)
-            {
-                return NotFound();
-            }
-            return View(ad);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            try
-            {
-                _adService.DeleteAdAsync(id).Wait();
-                var ad = _adService.GetAdByIdAsync(id).Result;
-                if (ad == null)
-                {
-                    _logger.LogInformation($"Ad with ID {id} has been confirmed deleted.");
-                }
-                else
-                {
-                    _logger.LogWarning($"Ad with ID {id} still exists after deletion attempt.");
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error occurred while deleting ad with ID {id}.");
-                return RedirectToAction(nameof(Index), new { errorMessage = "Error occurred while deleting ad." });
-            }
-            return RedirectToAction(nameof(Index));
+            return _context.Ads.Any(e => e.Id == id);
         }
     }
 }
-

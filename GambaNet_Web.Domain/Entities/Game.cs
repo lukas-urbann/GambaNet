@@ -28,10 +28,24 @@ namespace GambaNet_Web.Domain.Entities
 
         [Range(0, 255, ErrorMessage = "B 0-255.")]
         public int BackgroundBlue { get; set; }
-
         public string? ImagePath { get; set; }
-        [NotMapped]
-        [FileContent("image")]
-        public IFormFile? Image { get; set; }
+        public void SetImagePath()
+        {
+            switch (GameType)
+            {
+                case "cups":
+                    ImagePath = "img/thumbnail/thumbnail_cups.png";
+                    break;
+                case "plinko":
+                    ImagePath = "img/thumbnail/thumbnail_plinko.png";
+                    break;
+                case "slots":
+                    ImagePath = "img/thumbnail/thumbnail_slots.png";
+                    break;
+                default:
+                    ImagePath = null;
+                    break;
+            }
+        }
     }
 }

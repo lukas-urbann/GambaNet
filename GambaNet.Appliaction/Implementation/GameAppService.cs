@@ -22,12 +22,6 @@ namespace GambaNet_Web.Application.Implementation
 
         public void Create(Game game)
         {
-            if (game.Image != null)
-            {
-                string imagePath = _thumbnailUploadService.FileUpload(game.Image, Path.Combine("thumbnail", "games"));
-                game.ImagePath = imagePath;
-                game.Image = null;
-            }
             _gambaNetDbContext.Games.Add(game);
             _gambaNetDbContext.SaveChanges();
         }
@@ -58,13 +52,7 @@ namespace GambaNet_Web.Application.Implementation
                 existingGame.BackgroundRed = game.BackgroundRed;
                 existingGame.BackgroundGreen = game.BackgroundGreen;
                 existingGame.BackgroundBlue = game.BackgroundBlue;
-
-                if (game.Image != null)
-                {
-                    string imagePath = _thumbnailUploadService.FileUpload(game.Image, Path.Combine("thumbnail", "games"));
-                    existingGame.ImagePath = imagePath;
-                    game.Image = null;
-                }
+                existingGame.ImagePath = game.ImagePath;
 
                 _gambaNetDbContext.Games.Update(existingGame);
                 _gambaNetDbContext.SaveChanges();

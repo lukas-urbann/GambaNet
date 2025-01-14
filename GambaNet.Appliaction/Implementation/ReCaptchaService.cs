@@ -1,33 +1,28 @@
-﻿using GambaNet_Web.Application.Abstraction;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
-using System.Net.Http;
+using GambaNet_Web.Application.Abstraction;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-
 
 namespace GambaNet_Web.Application.Implementation
 {
     public class ReCaptchaService : IReCaptchaService
     {
-        private readonly IConfiguration _configuration;
         private readonly HttpClient _httpClient;
+        private readonly string _secretKey;
 
-        public ReCaptchaService(IConfiguration configuration, HttpClient httpClient)
+        public ReCaptchaService(HttpClient httpClient, IConfiguration configuration)
         {
-            _configuration = configuration;
             _httpClient = httpClient;
+            _secretKey = configuration["6Le_UbUqAAAAAAlIy2GWIbAkjOZdjsiKp6wAokm3"];
         }
 
         public async Task<bool> VerifyCaptchaAsync(string token)
         {
-            var secretKey = _configuration["GoogleReCaptcha:SecretKey"];
-            var response = await _httpClient.GetStringAsync($"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={token}");
-            var captchaResult = JsonConvert.DeserializeObject<ReCaptchaResponse>(response);
-            return captchaResult.Success && captchaResult.Score >= 0.5;
+            var response = await _httpClient.PostAsync($"https://www.google.com/recaptcha/api/siteverify?secret={_secretKey}&response={token}", null);
+            var jsonString = await response.Content.ReadAsStringAsync();
+            var reCaptchaResponse = JsonConvert.DeserializeObject<ReCaptchaResponse>(jsonString);
+            return reCaptchaResponse.Success;
         }
     }
 
@@ -36,14 +31,8 @@ namespace GambaNet_Web.Application.Implementation
         [JsonProperty("success")]
         public bool Success { get; set; }
 
-        [JsonProperty("score")]
-        public float Score { get; set; }
-
-        [JsonProperty("action")]
-        public string Action { get; set; }
-
         [JsonProperty("challenge_ts")]
-        public string ChallengeTs { get; set; }
+        public string ChallengeTimestamp { get; set; }
 
         [JsonProperty("hostname")]
         public string Hostname { get; set; }

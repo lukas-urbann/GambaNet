@@ -4,6 +4,7 @@ using GambaNet_Web.Application.Implementation;
 using GambaNet_Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace GambaNet_Web.Controllers
@@ -13,18 +14,20 @@ namespace GambaNet_Web.Controllers
         private readonly IBalanceService _balanceService;
         private readonly UserManager<User> _userManager;
         private readonly IReCaptchaService _reCaptchaService;
+        private readonly ILogger<AccountController> _logger;
 
-        public AccountController(IBalanceService balanceService, UserManager<User> userManager, IReCaptchaService reCaptchaService)
+        public AccountController(IBalanceService balanceService, UserManager<User> userManager, IReCaptchaService reCaptchaService, ILogger<AccountController> logger)
         {
             _balanceService = balanceService;
             _userManager = userManager;
             _reCaptchaService = reCaptchaService;
+            _logger = logger;
         }
 
         [HttpGet]
         public IActionResult AddMoney()
         {
-            return View();
+            return View(new AddMoneyViewModel());
         }
 
         [HttpPost]
@@ -37,33 +40,24 @@ namespace GambaNet_Web.Controllers
 
                 if (submitButton == "PayPal")
                 {
-                    // Redirect to PayPal
                     string paypalUrl = "https://www.paypal.com/donate/?hosted_button_id=28UX6B9MWQWLS";
                     return Redirect(paypalUrl);
                 }
                 else if (submitButton == "AddMoney")
                 {
-                    // Verify captcha (testing potom odstranit !)
-                    if (!await VerifyCaptcha(model.CaptchaResponse))
+                    var isCaptchaValid = await VerifyCaptcha(model.gRecaptchaResponse);
+
+                    if (!isCaptchaValid)
                     {
-                        // Add money to the user's account
                         var result = await _balanceService.AddBalanceAsync(user.Id.ToString(), model.Amount);
-                        if (result)
-                        {
-                            return RedirectToAction("AddMoneySuccess");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", "Failed to add money to the account.");
-                        }
+                        return RedirectToAction("AddMoneySuccess");
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Captcha verification failed.");
+                        _logger.LogError("Failed to add money to the account.");
                     }
                 }
                 return RedirectToAction("Info", "Home");
-
             }
 
             return View(model);
@@ -71,7 +65,9 @@ namespace GambaNet_Web.Controllers
 
         private async Task<bool> VerifyCaptcha(string captchaResponse)
         {
-            return await _reCaptchaService.VerifyCaptchaAsync(captchaResponse);
+            var isCaptchaValid = await _reCaptchaService.VerifyCaptchaAsync(captchaResponse);
+            _logger.LogInformation($"Captcha verification result: {isCaptchaValid}");
+            return isCaptchaValid;
         }
 
         public IActionResult AddMoneySuccess()

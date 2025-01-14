@@ -1,35 +1,36 @@
 ﻿@model GambaNet_Web.Models.AddMoneyViewModel
 
 @{
-    ViewData["Title"] = "Dobít kredit";
+    ViewData["Title"] = "Přidat peníze";
 }
 
-<h2>Dobít kredit</h2>
-
+<h1>@ViewData["Title"]</h1>
+<br />
 <form asp-action="AddMoney" method="post">
     <div class="form-group">
         <label asp-for="Amount" class="control-label">Částka</label>
-        <input asp-for="Amount" class="form-control" />
+        <input asp-for="Amount" class="form-control" value="1" />
         <span asp-validation-for="Amount" class="text-danger"></span>
     </div>
+    <br />
     <div class="form-group">
-        <label for="captcha" class="control-label">Captcha</label>
-        <input type="text" name="CaptchaResponse" class="form-control" />
-        <span asp-validation-for="CaptchaResponse" class="text-danger"></span>
+        <div class="g-recaptcha" data-sitekey="6LfRrLcqAAAAAKBkkOIoZcmXdK3pAIpZ0Sa_ndEi"></div>
+        <input type="hidden" name="gRecaptchaResponse" id="gRecaptchaResponse" />
     </div>
+    <br />
     <div class="form-group">
-        <button type="button" class="btn btn-primary" onclick="redirectToPayPal()">Přispět na provoz přes PayPal</button>
-        <button type="submit" name="submitButton" value="AddMoney" class="btn btn-secondary">Dobít kredit</button>
+        <button type="submit" name="submitButton" value="AddMoney" class="btn btn-primary">Přidat peníze</button>
+        <button type="submit" name="submitButton" value="PayPal" class="btn btn-secondary">Přispět na provoz přes PayPal</button>
     </div>
 </form>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
-        function redirectToPayPal() {
-            var paypalUrl = "https://www.paypal.com/donate/?hosted_button_id=28UX6B9MWQWLS";
-            window.location.href = paypalUrl;
+        function setRecaptchaResponse() {
+            document.getElementById('gRecaptchaResponse').value = grecaptcha.getResponse();
         }
+        document.querySelector('form').addEventListener('submit', setRecaptchaResponse);
     </script>
 }
-

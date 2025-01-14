@@ -18,7 +18,6 @@ namespace GambaNet_Web.ViewComponents
             var ad = await _adService.GetRandomAdAsync();
             if (ad == null)
             {
-                // Return a default view or a message indicating no ads are available
                 return View("NoAds");
             }
             return View(ad);
